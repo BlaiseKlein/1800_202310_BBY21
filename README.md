@@ -7,9 +7,9 @@ This browser based web application to ...
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
 * Blaise Klein, I'm excited for this project... I think
-* ...
 * Hi, my name is Jimmy Tsang. I'm excited about this project because I get to explore the git/github workflow! :)
-	
+* Huarui Ji
+
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
 * HTML, CSS, JavaScript
