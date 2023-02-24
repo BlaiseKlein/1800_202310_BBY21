@@ -14,6 +14,13 @@
     <!-- Boostrap Library JS CDN  go here -->
 
     <!-- Other libraries go here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+
     <!-- Google Icons (Material Design)-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -44,17 +51,13 @@
           </form>
         </div>
       </nav>
-      <div class="px-4 py-5 my-5 text-center">
-        <img class="d-block mx-auto mb-4" src="/images/bcitlogo.png" alt="" width="72" height="57">
-        <h1 class="display-5 fw-bold">Welcome!</h1>
-        <div class="col-lg-6 mx-auto">
-          <p class="lead mb-4">This is a web app to help BCIT commuters easily share and receive info about the conditions of nearby roads and bus loops.</p>
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Sign in</button>
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4">Join us</button>
-          </div>
-        </div>
-      </div>
+      
+      <!-- The surrounding HTML is left untouched by FirebaseUI.
+     Your app may use that space for branding, controls and other customizations.-->
+      <h1>Welcome to My Awesome App</h1>
+      <div id="firebaseui-auth-container"></div>
+      <div id="loader">Loading...</div>
+
 
       <footer class="navbar justify-content-evenly bg-info fixed-bottom">
         <div class="container">
@@ -69,6 +72,8 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
+    <script src="./scripts/firebasesetup.js"></script>
+    <script src="./scripts/authentication.js"></script>
 
 </body>
 
