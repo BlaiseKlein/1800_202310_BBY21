@@ -4,3 +4,8 @@
 body {
     font-family: Saira, sans-serif;
   }
+
+#changeinfo > div {
+  padding: 2%;
+  text-align: left;
+}
