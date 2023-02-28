@@ -9,3 +9,9 @@ body {
   padding: 2%;
   text-align: left;
 }
+
+.navbar {
+  background-color: #0057a3 ;
+  color: white;
+}
+

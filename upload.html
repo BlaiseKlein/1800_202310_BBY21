@@ -39,25 +39,34 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <form class="d-flex">
-            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
       </nav>
       <div class="px-4 py-5 my-5 text-center">
-        <img class="d-block mx-auto mb-4" src="/images/bcitlogo.png" alt="" width="72" height="57">
-        <!-- <h1 class="display-5 fw-bold">Welcome!</h1> -->
-        <h1 class="display-5 fw-bold">Choose an option.</h1>
+        <h1 class="display-5 fw-bold">Your post</h1>
+        <img src="/images/brentwood.jpg" alt="placeholder img">
         <div class="col-lg-6 mx-auto">
-          <!--- <p class="lead mb-4">This is a web app to help BCIT commuters easily share and receive info about the conditions of nearby roads and bus loops.</p> --->
-                     
+        
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Title</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter a short but descriptive title to help others!">
+              
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Caption</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter a caption. The more detailed, the more helpful it is."></textarea>
+            </div>
+            <div class="form-check">
+              
+              
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Upload again</button>
+          </form>
 
-          <div class="d-flex flex-column">
-            <p class="mb-0">Upload picture: supported file types are JPG, PNG, WebP   </p> 
-            <button type="button" id="upload-pic-button" class="btn btn-primary btn-lg mb-4 px-4 gap-3">Upload picture</button>
-            <p class="mb-0">Click to view posts from you or other users.   </p>
-            <button type="button" id="view-post-button" class="btn btn-outline-secondary btn-lg px-4">View posts</button>
-          </div>
+          
         </div>        
       </div>
 
