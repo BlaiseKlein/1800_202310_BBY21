@@ -34,23 +34,23 @@
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
-      <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-          <h5 class="text-white h4">Collapsed content</h5>
-          <span class="text-muted">Toggleable via the navbar brand.</span>
-        </div>
+    <nav class="navbar navbar-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <form class="d-flex">
+          <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
       </div>
-      <nav class="navbar navbar-dark">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <form class="d-flex">
-            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
+    </nav>
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-dark p-4">
+        <span id="settingbtn" style="color:white;" class="material-symbols-outlined">settings</span>
+        <span class="text-muted">User Settings</span>
+      </div>
+    </div>
       
       <!-- The surrounding HTML is left untouched by FirebaseUI.
      Your app may use that space for branding, controls and other customizations.-->
@@ -72,6 +72,8 @@
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="./scripts/firebasesetup.js"></script>
     <script src="./scripts/authentication.js"></script>
+    <script src="./scripts/navmenu.js"></script>
+
 
 </body>
 
