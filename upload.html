@@ -50,14 +50,21 @@
         <textarea id="description" rows="4" cols="50" required></textarea>
       </div>
       <div class="form-group">
-        <label for="landmarkName">Landmark Name <span style="color: red;">*Required</span></label>
-        <select class="form-control" id="landmarkName" required>
-          <option value="" disabled selected>Choose a Landmark</option>
-          <option value="Metrotown Station">Metrotown Station</option>
-          <option value="Brentwood Station">Brentwood Station</option>
-          <option value="BCIT Bus Loop">BCIT Bus Loop</option>
+        <label for="transport-type">Select transport type: <span style="color: red;">*Required</span></label>
+        <select id="transport-type" required>
+          <option value="" selected disabled hidden>Select a transport type</option>
+          <option value="car">Car</option>
+          <option value="bus">Bus</option>
         </select>
       </div>
+      
+      <div class="form-group">
+        <label for="landmark-name">Select landmark name: <span style="color: red;">*Required</span></label>
+        <select id="landmark-name" required>
+          <option value="" selected disabled hidden>Select a landmark name</option>
+        </select>
+      </div>
+      
       
       <div class="container py-3">
         <input type="file" id="mypic-input" accept="image/*" />
