@@ -24,14 +24,17 @@ listenFileSelect();
 function savePost() {
     alert("SAVE POST is triggered");
 
-        // Check if the selected file is valid
-        var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.webp)$/i;
-        var fileInput = document.getElementById("mypic-input");
-        if (!allowedExtensions.exec(fileInput.value)) {
-            alert('Please upload file having extensions .jpg/.jpeg/.png/.webp only.');
-            fileInput.value = '';
-            return false;
-        }
+    var title = document.getElementById("title").value;
+    var desc = document.getElementById("description").value;
+    var landmarkName = document.getElementById("landmarkName").value;
+
+    // Check if the required fields are filled in
+    if (!title || !desc || !landmarkName) {
+        var errorText = document.getElementById("error-text");
+        errorText.style.color = "red";
+        errorText.innerHTML = "Please fill in all the required fields.";
+        return;
+    }
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -61,7 +64,6 @@ function savePost() {
                         .then(function (doc) {
                             console.log("Post document added!");
                             console.log(doc.id);
-                            uploadPic(doc.id);
                             window.location.href = "posts.html"; // Redirect the user to posts.html
                         })
                         .catch(function (error) {
@@ -77,6 +79,7 @@ function savePost() {
         }
     });
 }
+
 
 function uploadPic(postDocID) {
     console.log("inside uploadPic " + postDocID);
