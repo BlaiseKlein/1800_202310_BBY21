@@ -6,8 +6,25 @@ var uiConfig = {
         // User successfully signed in.
         // Return type determines whether we continue the redirect automatically
         // or whether we leave that to developer to handle.
-        return true;
-      },
+        var user = authResult.user;                            // get the user object from the Firebase authentication database
+        if (authResult.additionalUserInfo.isNewUser) {         //if new user
+            db.collection("users").doc(user.uid).set({         //write to firestore. We are using the UID for the ID in users collection
+                  uid: user.uid, 
+                  name: user.displayName,                    //"users" collection
+                  email: user.email,                         //with authenticated user's ID (user.uid)
+                  transport: "Bus",                      //optional default profile info      
+                  location: "Brentwood"                          //optional default profile info
+            }).then(function () {
+                   console.log("New user added to firestore");
+                   window.location.assign("main.html");       //re-direct to main.html after signup
+            }).catch(function (error) {
+                   console.log("Error adding new user: " + error);
+            });
+        } else {
+            return true;
+        }
+            return false;
+        },
       uiShown: function() {
         // The widget is rendered.
         // Hide the loader.
@@ -33,3 +50,19 @@ var uiConfig = {
   };
   // The start method will wait until the DOM is loaded.
 ui.start('#firebaseui-auth-container', uiConfig);
+console.log(db);
+
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+  .then(() => {
+    // Existing and future Auth states are now persisted in the current
+    // session only. Closing the window would clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with session persistence.
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
