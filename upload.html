@@ -16,6 +16,12 @@
 
     <!-- Other libraries go here -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <!-- Google Icons (Material Design)-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -26,50 +32,63 @@
 
 <body>
 
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-    <div id="navinsert"></div>
+  <!------------------------------>
+  <!-- Your HTML Layout go here -->
+  <!------------------------------>
+  <div id="navinsert"></div>
 
-      <div class="px-4 py-5 my-5 text-center">
-        <h1 class="display-5 fw-bold">Your post</h1>
-        <img src="/images/brentwood.jpg" alt="placeholder img">
-        <div class="col-lg-6 mx-auto">
-        
-          <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Title</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter a short but descriptive title to help others!">
-              
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Caption</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter a caption. The more detailed, the more helpful it is."></textarea>
-            </div>
-            <div class="form-check">
-              
-              
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="submit" class="btn btn-primary">Upload again</button>
-          </form>
-
-          
-        </div>        
+  <div class="container">
+    <h1>Make a Post </h1>
+    <div id="error-text"></div>
+    <form>
+      <div class="form-group">
+        <label for="title">Title <span style="color: red;">*Required</span></label>
+        <textarea id="title" rows="1" cols="50" required></textarea>
       </div>
-
-      <div id="footinsert"></div>
-
+      <div class="form-group">
+        <label for="description">Description <span style="color: red;">*Required</span></label>
+        <textarea id="description" rows="4" cols="50" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="transport-type">Select transport type: <span style="color: red;">*Required</span></label>
+        <select id="transport-type" required>
+          <option value="" selected disabled hidden>Select a transport type</option>
+          <option value="car">Car</option>
+          <option value="bus">Bus</option>
+        </select>
+      </div>
       
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
+      <div class="form-group">
+        <label for="landmark-name">Select landmark name: <span style="color: red;">*Required</span></label>
+        <select id="landmark-name" required>
+          <option value="" selected disabled hidden>Select a landmark name</option>
+        </select>
+      </div>
+      
+      
+      <div class="container py-3">
+        <input type="file" id="mypic-input" accept="image/*" />
+        <img id="mypic-goes-here" width=100 height=100 />
+      </div>
+      <div class="d-flex mt-5">
+        <button id="post-button" type="button" class="btn btn-info" onclick="savePost()">Post Now</button>
+      </div>
+    </form>
+  </div>
+  <div id="footinsert"></div>
 
-    <!-- Link to scripts of your own -->
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/navandfoot.js"></script>
+  <!---------------------------------------------->
+  <!-- Your own JavaScript functions go here    -->
+  <!---------------------------------------------->
 
+  <!-- Link to scripts of your own -->
+  <script src="./scripts/script.js"></script>
+  <script src="./scripts/navandfoot.js"></script>
+  <script src="./scripts/firebasesetup.js"></script>
+  <script src="./scripts/upload.js"></script>
 
 </body>
+
+
 
 </html>
