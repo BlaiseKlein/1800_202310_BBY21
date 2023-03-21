@@ -1,21 +1,27 @@
+var ImageFile;
+
 function listenFileSelect() {
+  try {
     // listen for file selection
     var fileInput = document.getElementById("mypic-input"); // pointer #1
     const image = document.getElementById("mypic-goes-here"); // pointer #2
 
     // When a change happens to the File Chooser Input
     fileInput.addEventListener('change', function (e) {
-        ImageFile = e.target.files[0]; //Global variable
+      ImageFile = e.target.files[0]; //Global variable
 
-        // Check if the file type is valid
-        if (!ImageFile.type.match('image/jpeg') && !ImageFile.type.match('image/png') && !ImageFile.type.match('image/webp')) {
-            alert('Please select a valid image file (JPG, PNG or WEBP)');
-            return;
-        }
+      // Check if the file type is valid
+      if (!ImageFile.type.match('image/jpeg') && !ImageFile.type.match('image/png') && !ImageFile.type.match('image/webp')) {
+        alert('Please select a valid image file (JPG, PNG or WEBP)');
+        return;
+      }
 
-        var blob = URL.createObjectURL(ImageFile);
-        image.src = blob; // Display this image
+      var blob = URL.createObjectURL(ImageFile);
+      image.src = blob; // Display this image
     });
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 
@@ -80,11 +86,12 @@ function listenTransportSelect() {
       return;
     }
   
-    // Check if the image file type is valid
-    if (!ImageFile || (!ImageFile.type.match('image/jpeg') && !ImageFile.type.match('image/png') && !ImageFile.type.match('image/webp'))) {
-      alert('Please select a valid image file (JPG, PNG or WEBP)');
-      return;
-    }
+// Check if the image file type is valid
+if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('image/png') && !ImageFile.type.match('image/webp')) {
+  alert('Please select a valid image file (JPG, PNG or WEBP)');
+  return;
+}
+
   
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
@@ -113,7 +120,7 @@ function listenTransportSelect() {
                 console.log("Post document added!");
                 console.log(doc.id);
                 uploadPic(doc.id); // Upload image after the post is added
-                window.location.href = "posts.html"; // Redirect the user to posts.html
+               
               })
               .catch(function (error) {
                 console.error("Error adding document: ", error);
@@ -133,30 +140,54 @@ function listenTransportSelect() {
 
 
 
-function uploadPic(postDocID) {
+  function uploadPic(postDocID) {
     console.log("inside uploadPic " + postDocID);
-    var storageRef = storage.ref("images/" + postDocID + ".jpg");
-
-    storageRef
-        .put(ImageFile) //global variable ImageFile
+  
+    if (!ImageFile) {
+      // If no image was selected, simply update the post document without adding an image field
+      db.collection("posts")
+        .doc(postDocID)
+        .update({
+          last_updated: firebase.firestore.FieldValue.serverTimestamp() //current system time
+        })
         .then(function () {
-            console.log("Uploaded to Cloud Storage.");
-            storageRef
-                .getDownloadURL()
-                .then(function (url) {
-                    // Get URL of the uploaded file
-                    console.log("Got the download URL.");
-                    db.collection("posts")
-                        .doc(postDocID)
-                        .update({
-                            image: url, // Save the URL into users collection
-                        })
-                        .then(function () {
-                            console.log("Added pic URL to Firestore.");
-                        });
-                });
+          console.log("Updated post without image.");
+          console.log("Redirecting to posts.html.");
+          window.location.href = "posts.html"; // Redirect the user to posts.html
         })
         .catch(function (error) {
-            console.log("Error uploading to Cloud Storage: ", error);
+          console.error("Error updating post: ", error);
         });
-}
+  
+      return;
+    }
+  
+    var storageRef = storage.ref("images/" + postDocID + ".jpg");
+  
+    storageRef
+      .put(ImageFile) //global variable ImageFile
+      .then(function () {
+        console.log("Uploaded to Cloud Storage.");
+        storageRef
+          .getDownloadURL()
+          .then(function (url) {
+            // Get URL of the uploaded file
+            console.log("Got the download URL.");
+            db.collection("posts")
+              .doc(postDocID)
+              .update({
+                image: url, // Save the URL into users collection
+                last_updated: firebase.firestore.FieldValue.serverTimestamp() //current system time
+              })
+              .then(function () {
+                console.log("Added pic URL to Firestore. Redirecting to posts.html.");
+                window.location.href = "posts.html"; // Redirect the user to posts.html
+              });
+          });
+      })
+      .catch(function (error) {
+        console.log("Error uploading to Cloud Storage: ", error);
+      });
+  }
+  
+  
