@@ -1,18 +1,36 @@
 <nav class="navbar navbar-dark">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <form class="d-flex">
-        <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-        <button class="btn btn-outline-success" type="submit">Logout</button>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
-  <div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">
-      <span id="settingbtn" style="color:white;" class="material-symbols-outlined">settings</span>
-      <span class="text-muted">User Settings</span>
-    </div>
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <form class="d-flex">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Location
+        </button>
+        <ul class="dropdown-menu" id="location-dropdown">
+          <li><button class="dropdown-item" type="button" data-location="BCIT Bus Loop">BCIT Bus Loop</button></li>
+          <li><button class="dropdown-item" type="button" data-location="Metrotown Station">Metrotown Station</button></li>
+          <li><button class="dropdown-item" type="button" data-location="Brentwood Station">Brentwood Station</button></li>
+        </ul>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Transport Type
+        </button>
+        <ul class="dropdown-menu" id="transport-dropdown">
+          <li><button class="dropdown-item" type="button" data-transport="car">car</button></li>
+          <li><button class="dropdown-item" type="button" data-transport="bus">bus</button></li>
+        </ul>
+      </div>
+      <button class="btn btn-outline-success" type="button" onclick="postsNav()">View Posts</button>
+      <!-- <button class="btn btn-outline-success" id="search-button" type="button">Search</button> -->
+    </form>
   </div>
+</nav>
+<div class="collapse" id="navbarToggleExternalContent">
+  <div class="bg-dark p-4">
+    <h5 class="text-white h4">Collapsed content</h5>
+    <span class="text-muted">Toggleable via the navbar brand.</span>
+  </div>
+</div>

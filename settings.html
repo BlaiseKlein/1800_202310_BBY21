@@ -39,8 +39,49 @@
       
     <div id="navinsert"></div>
 
-      
-      <div id="userinfo">
+    <div class="container">
+      <h1>User Profile </h1>
+      <form>
+          <fieldset class="mb-3" id="personalInfoFields1" disabled>
+              <div class="form-group">
+                  <label>Enter your name</label>
+                  <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+              </div>
+          </fieldset>
+              <div class="form-group">
+                  <div>Choose your travel location</div>
+                  <!-- <input type="dropdown" id="locationInput" class="form-control" placeholder="Choose your location"> -->
+                  <fieldset class="mb-3" id="personalInfoFields2" disabled><div>
+                    <input type="radio" id="brentwood" class="locationInput" class="form-control" name="locationInput">
+                    <label for="brentwood">Brentwood</label>
+                  </div><div>
+                    <input type="radio" id="metrotown" class="locationInput" class="form-control" name="locationInput">
+                    <label for="metrotown">Metrotown</label>
+                  </div><div>
+                    <input type="radio" id="bcit" class="locationInput" class="form-control" name="locationInput">
+                    <label for="bcit">BCIT</label>
+                  </div></fieldset>
+              </div>
+              <div class="form-group">
+                  <div>Choose your transport type</div>
+                  <fieldset class="mb-3" id="personalInfoFields3" disabled><div>
+                    <input type="radio" id="bus" class="transportInput" class="form-control" value="Bus" name="transportInput">
+                    <label for="bus">Bus</label>
+                  </div><div>
+                    <input type="radio" id="car" class="transportInput" class="form-control" value="Car" name="transportInput">
+                    <label for="car">Car</label>
+                  </div></fieldset>
+              </div>
+          </fieldset>
+          <div class="d-flex justify-content-end mt-5">
+              <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
+              <span style="width: 10px"></span>
+              <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
+          </div>
+      </form>
+</div>
+  <!-- stuf
+      <!-- <div id="userinfo">
         <form id="changeinfo">
           <div id="changename">
             <p id="currentname"></p>
@@ -95,7 +136,7 @@
             </div>
           </div>
         </form>
-      </div>
+      </div> -->
 
       <div id="footinsert"></div>
 
@@ -107,7 +148,7 @@
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="./scripts/firebasesetup.js"></script>
     <script src="./scripts/navandfoot.js"></script>
-    <!-- <script src="./scripts/userdata.js"></script> -->
+    <script src="./scripts/userdata.js"></script>
 
 </body>
 

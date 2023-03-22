@@ -60,6 +60,7 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
     // ...
     // New sign-in will be persisted with session persistence.
     return firebase.auth().signInWithEmailAndPassword(email, password);
+    console.log("session");
   })
   .catch((error) => {
     // Handle Errors here.

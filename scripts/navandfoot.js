@@ -4,14 +4,18 @@ function navstart(callback){
     $("#footinsert").load("footer.html");
 }
 
-function loaduserinfo(callback){
-    const user = firebase.auth().currentUser;
-    var nameElement = document.getElementById("currentname");
-    var currentemail = document.getElementById("currentemail");
+// function loaduserinfo(){
+//     const user = firebase.auth().currentUser;
+//     var nameElement = document.getElementById("currentname");
+//     var currentemail = document.getElementById("currentemail");
 
-    nameElement.innerHTML = user.displayName;
-    currentemail.innerHTML = user.email;
-    console.log(user);
+//     nameElement.innerHTML = user.displayName;
+//     currentemail.innerHTML = user.email;
+//     console.log(user);
+// }
+
+function postsNav(){
+    window.location.assign("postViewing.html");
 }
 
 navstart(function (){
@@ -20,3 +24,5 @@ navstart(function (){
         console.log("Help");
     });
 });
+
+// loaduserinfo();

@@ -152,8 +152,8 @@ if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('i
         })
         .then(function () {
           console.log("Updated post without image.");
-          console.log("Redirecting to posts.html.");
-          window.location.href = "posts.html"; // Redirect the user to posts.html
+          console.log("Redirecting to postViewing.html.");
+          window.location.href = "postViewing.html"; // Redirect the user to postViewing.html
         })
         .catch(function (error) {
           console.error("Error updating post: ", error);
@@ -180,8 +180,8 @@ if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('i
                 last_updated: firebase.firestore.FieldValue.serverTimestamp() //current system time
               })
               .then(function () {
-                console.log("Added pic URL to Firestore. Redirecting to posts.html.");
-                window.location.href = "posts.html"; // Redirect the user to posts.html
+                console.log("Added pic URL to Firestore. Redirecting to postViewing.html.");
+                window.location.href = "postViewing.html"; // Redirect the user to postViewing.html
               });
           });
       })
