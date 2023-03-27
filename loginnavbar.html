@@ -5,7 +5,7 @@
     </button>
     <form class="d-flex">
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="drop1" style="">
           Location
         </button>
         <ul class="dropdown-menu" id="location-dropdown">
@@ -15,7 +15,7 @@
         </ul>
       </div>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="drop2" style="">
           Transport Type
         </button>
         <ul class="dropdown-menu" id="transport-dropdown">
@@ -26,13 +26,13 @@
       <button class="btn btn-outline-success" type="button" onclick="postsNav()">View Posts</button>
       <!-- <button class="btn btn-outline-success" id="search-button" type="button">Search</button> -->
         <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-        <button class="btn btn-outline-success" type="button" onclick="postsNav()">Upload</button>
+        <button class="btn btn-outline-success" type="button" onclick="uploadNav()">Upload</button>
     </form>
   </div>
 </nav>
 <div class="collapse" id="navbarToggleExternalContent">
   <div class="bg-dark p-4">
-    <h5 class="text-white h4">Collapsed content</h5>
-    <span class="text-muted">Toggleable via the navbar brand.</span>
+    <a id="settingbtn" style="color:white;" href="settings.html" class="material-symbols-outlined">settings</a>
+      <span class="text-muted">User Settings</span>
   </div>
 </div>

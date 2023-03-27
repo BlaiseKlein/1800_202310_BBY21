@@ -1,11 +1,17 @@
-
+var currentUser;
 
 function navstart(callback){
 
     firebase.auth().onAuthStateChanged(user => {
         if (user){
-            // currentUser = db.collection("users").doc(user.uid);
-            $("#navinsert").load("loginnavbar.html");
+            currentUser = db.collection("users").doc(user.uid);
+            $("#navinsert").load("loginnavbar.html", (responseTxt, statusTxt, xhr) => {
+                if (!window.location.toString().includes("/postViewing.html")){
+                    document.getElementById("drop1").setAttribute("style", "display: none;")
+                    document.getElementById("drop2").setAttribute("style", "display: none;")
+                }
+                filterSetup();
+            });
             $("#footinsert").load("footer.html");
         } else {
             $("#navinsert").load("navbar.html");
@@ -37,14 +43,13 @@ function postsNav(){
 }
 
 function uploadNav(){
-    windows.location.assign("upload.html");
+    window.location.assign("upload.html");
 }
 
-navstart(function (){
-    const settingsbutton = document.getElementById("settingbtn");
-    settingsbutton.addEventListener('click', function (){
-        console.log("Help");
-    });
-});
+function loginNav(){
+    window.location.assign("login.html")
+}
+
+navstart();
 
 // loaduserinfo();

@@ -1,7 +1,6 @@
 // Get a reference to the posts collection in Firebase
 const postsRef = firebase.firestore().collection("posts");
 const userRef = firebase.firestore().collection("users");
-const myPosts = postsRef.where("owners", "==", currentuser);
 
 function filterSetup(){
   
@@ -17,9 +16,11 @@ function filterSetup(){
     query.get().then((querySnapshot) => {
       const filteredPosts = [];
       querySnapshot.forEach((doc) => {
-        // Extract the document data into a post object
         const post = doc.data();
-        post.id = doc.id;
+        if (post.owner == currentUser){
+          // Extract the document data into a post object
+          post.id = doc.id;
+        }
         filteredPosts.push(post);
       });
 
@@ -38,7 +39,9 @@ function filterSetup(){
       querySnapshot.forEach((doc) => {
         // Extract the document data into a post object
         const post = doc.data();
-        post.id = doc.id;
+        if (post.owner == currentUser){
+          post.id = doc.id;
+        }
         filteredPosts.push(post);
       });
 
@@ -53,9 +56,11 @@ function filterSetup(){
       const allPosts = [];
       querySnapshot.forEach((doc) => {
         // Extract the document data into a post object
-        const post = doc.data();
-        post.id = doc.id;
-        allPosts.push(post);
+          const post = doc.data();
+          if (post.owner == currentUser){
+            post.id = doc.id;
+          }
+          allPosts.push(post);
       });
 
       // Call the displayPosts function with the array of all post objects
