@@ -22,3 +22,22 @@ body {
   text-align: center;
 }
 
+.bg-dark.p-4 > * {
+  display: block;
+  margin-bottom: 10px;
+  
+}
+
+.bg-dark {
+  background-color: rgb(255, 255, 121) !important;
+}
+
+#logoutbtn:hover {
+  cursor: pointer;
+}
+
+#footinsert {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

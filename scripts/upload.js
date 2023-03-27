@@ -51,7 +51,7 @@ function listenTransportSelect() {
         }
         landmarkSelect.style.display = "block";
       } else if (transportType === "car") {
-        var carLandmarks = ["Hwy1", "Canada Way", "Willingdon", "Lougheed"];
+        var carLandmarks = ["Highway 1", "Canada Way", "Willingdon", "Lougheed"];
         for (var i = 0; i < carLandmarks.length; i++) {
           var option = document.createElement("option");
           option.text = carLandmarks[i];
@@ -71,7 +71,7 @@ function listenTransportSelect() {
   
 
   function savePost() {
-    alert("SAVE POST is triggered");
+    //alert("SAVE POST is triggered");
   
     var title = document.getElementById("title").value;
     var desc = document.getElementById("description").value;

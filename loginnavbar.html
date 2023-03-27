@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+
 <nav class="navbar navbar-dark">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +40,18 @@
 </nav>
 <div class="collapse" id="navbarToggleExternalContent">
   <div class="bg-dark p-4">
-    <a id="settingbtn" style="color:white;" href="settings.html" class="material-symbols-outlined">settings</a>
+    <div id="settingsdiv">
+    <a id="settingbtn" style="color:white;" href="settings.html" class="material-symbols-outlined">Settings</a>
       <span class="text-muted">User Settings</span>
+    </div>
+    <div id="logoutdiv">
+      <a id="logoutbtn" style="color:white;" class="material-symbols-outlined">Logout</a>
+      <span class="text-muted">Logout</span>
+    </div>
   </div>
 </div>
+
+
+<script src="./scripts/firebasesetup.js"></script>
+<script src="./scripts/authentication.js"></script>
+<script src="./scripts/logout.js"></script>
