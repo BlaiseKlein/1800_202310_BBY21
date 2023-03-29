@@ -13,7 +13,7 @@ function filterSetup(){
     // Create a new query that filters by the selected transport type
     let query = postsRef.where("transportType", "==", selectedTransport);
 
-    query.get().then((querySnapshot) => {
+    query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
       const filteredPosts = [];
       querySnapshot.forEach((doc) => {
         // Extract the document data into a post object
@@ -32,7 +32,7 @@ function filterSetup(){
 
     // Create a new query that filters by the selected location
     let query = postsRef.where("landmarkName", "==", selectedLocation);
-    query.get().then((querySnapshot) => {
+    query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
       const filteredPosts = [];
       querySnapshot.forEach((doc) => {
         // Extract the document data into a post object
@@ -48,7 +48,7 @@ function filterSetup(){
 }
   // Function to display all the posts on the page initially
   function displayAllPosts() {
-    postsRef.get().then((querySnapshot) => {
+    postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
       const allPosts = [];
       querySnapshot.forEach((doc) => {
         // Extract the document data into a post object

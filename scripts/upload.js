@@ -107,7 +107,7 @@ if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('i
             // Save post data to Firestore
             db.collection("posts")
               .add({
-                owner: user.uid,
+                owner: user.displayName,
                 title: title,
                 description: desc,
                 transportType: transportType,

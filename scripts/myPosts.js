@@ -15,7 +15,7 @@ function filterSetup(){
     let query = postsRef.where("transportType", "==", selectedTransport);
     firebase.auth().onAuthStateChanged(user => {
 
-    query.where("owner", "==", user.uid).get().then((querySnapshot) => {
+    query.where("owner", "==", user.displayName).get().then((querySnapshot) => {
       const filteredPosts = [];
       querySnapshot.forEach((doc) => {
         const post = doc.data();
@@ -39,7 +39,7 @@ function filterSetup(){
     let query = postsRef.where("landmarkName", "==", selectedLocation);
     firebase.auth().onAuthStateChanged(user => {
 
-      query.where("owner", "==", user.uid).get().then((querySnapshot) => {
+      query.where("owner", "==", user.displayName).get().then((querySnapshot) => {
         const filteredPosts = [];
         querySnapshot.forEach((doc) => {
           // Extract the document data into a post object
@@ -58,7 +58,7 @@ function filterSetup(){
   function displayAllPosts() {
     firebase.auth().onAuthStateChanged(user => {
 
-    postsRef.where("owner", "==", user.uid).get().then((querySnapshot) => {
+    postsRef.where("owner", "==", user.displayName).orderBy("last_updated", "desc").get().then((querySnapshot) => {
         const allPosts = [];
         querySnapshot.forEach((doc) => {
           // Extract the document data into a post object
