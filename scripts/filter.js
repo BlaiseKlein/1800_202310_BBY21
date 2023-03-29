@@ -1,10 +1,9 @@
 // Get a reference to the posts collection in Firebase
 const postsRef = firebase.firestore().collection("posts");
 const userRef = firebase.firestore().collection("users");
-const myPosts = postsRef.where("owners", "==", currentuser);
 
 function filterSetup(){
-  
+
   // Add event listener to the location dropdown menu
   const locationDropdown = document.getElementById("location-dropdown");
 
@@ -78,6 +77,7 @@ function displayPosts(posts) {
       imageSrc = post.image;      
     }
     var postDesc = shortDesc(post.description);
+    
     postElement.classList.add("post");
     postElement.innerHTML = `
       <div class="card" style="width: 29.5rem;">
@@ -93,7 +93,6 @@ function displayPosts(posts) {
     </div>
       `;
     postContainer.appendChild(postElement);
-    
   }
 
 function shortDesc(description){

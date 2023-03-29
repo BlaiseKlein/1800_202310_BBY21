@@ -37,7 +37,12 @@ body {
 }
 
 #footinsert {
-  position: fixed;
+  position: relative;
   bottom: 0;
   width: 100%;
+}
+
+#delete-icon:hover {
+  cursor: pointer;
+  color: red;
 }

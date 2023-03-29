@@ -1,6 +1,7 @@
 // Get a reference to the posts collection in Firebase
 const postsRef = firebase.firestore().collection("posts");
 const userRef = firebase.firestore().collection("users");
+const storageRef = firebase.storage().ref();
 
 function filterSetup(){
   
@@ -12,8 +13,9 @@ function filterSetup(){
     const selectedTransport = event.target.getAttribute("data-transport");
     // Create a new query that filters by the selected transport type
     let query = postsRef.where("transportType", "==", selectedTransport);
+    firebase.auth().onAuthStateChanged(user => {
 
-    query.get().then((querySnapshot) => {
+    query.where("owner", "==", user.uid).get().then((querySnapshot) => {
       const filteredPosts = [];
       querySnapshot.forEach((doc) => {
         const post = doc.data();
@@ -28,44 +30,48 @@ function filterSetup(){
       displayPosts(filteredPosts);
     });
   });
+  });
 
   locationDropdown.addEventListener("click", (event) => {
     const selectedLocation = event.target.getAttribute("data-location");
 
     // Create a new query that filters by the selected location
     let query = postsRef.where("landmarkName", "==", selectedLocation);
-    query.get().then((querySnapshot) => {
-      const filteredPosts = [];
-      querySnapshot.forEach((doc) => {
-        // Extract the document data into a post object
-        const post = doc.data();
-        if (post.owner == currentUser){
-          post.id = doc.id;
-        }
-        filteredPosts.push(post);
-      });
+    firebase.auth().onAuthStateChanged(user => {
 
-      // Call the displayPosts function with the array of post objects
-      displayPosts(filteredPosts);
+      query.where("owner", "==", user.uid).get().then((querySnapshot) => {
+        const filteredPosts = [];
+        querySnapshot.forEach((doc) => {
+          // Extract the document data into a post object
+          const post = doc.data();
+            post.id = doc.id;
+          filteredPosts.push(post);
+        });
+
+        // Call the displayPosts function with the array of post objects
+        displayPosts(filteredPosts);
     });
+  });
   });
 }
   // Function to display all the posts on the page initially
   function displayAllPosts() {
-    postsRef.get().then((querySnapshot) => {
-      const allPosts = [];
-      querySnapshot.forEach((doc) => {
-        // Extract the document data into a post object
-          const post = doc.data();
-          if (post.owner == currentUser){
-            post.id = doc.id;
-          }
-          allPosts.push(post);
-      });
+    firebase.auth().onAuthStateChanged(user => {
 
-      // Call the displayPosts function with the array of all post objects
-      displayPosts(allPosts);
+    postsRef.where("owner", "==", user.uid).get().then((querySnapshot) => {
+        const allPosts = [];
+        querySnapshot.forEach((doc) => {
+          // Extract the document data into a post object
+          const post = doc.data();
+          post.id = doc.id;
+          allPosts.push(post);
+        });
+
+        // Call the displayPosts function with the array of all post objects
+        displayPosts(allPosts);
+      });
     });
+
   }
 // Function to display the posts on the page
 function displayPosts(posts) {
@@ -94,11 +100,12 @@ function displayPosts(posts) {
       <p class="card-text" style="display: block;">${postDesc}</p>
       <p class="long-text" style="display: none;">${post.description}</p>
       <button class="btn btn-primary view-more" data-post-id="${post.id}">View More</button>
+      <i class="material-icons" id="delete-icon">delete</i>
       </div>
     </div>
       `;
-    postContainer.appendChild(postElement);
-    
+    postElement.querySelector('#delete-icon').onclick = () => deletePost(post.id);
+    postContainer.appendChild(postElement);    
   }
 
 function shortDesc(description){
@@ -110,8 +117,37 @@ function shortDesc(description){
   }
   return shortenedDesc;
 }
+//Delete from posts collection
+function deletePost(postid) {
+  var result = confirm("Want to delete?");
+  if (result) {
+      //Logic to delete the item
+      db.collection("posts").doc(postid)
+      .delete()
+      .then(() => {
+          console.log("1. Document deleted from Posts collection");
+          deleteFromStorage(postid);
+      }).catch((error) => {
+          console.error("Error removing document: ", error);
+      });
+  }
+}
 
+//Delete from image storage.
+function deleteFromStorage(postid) {
+  // Create a reference to the file to delete
+  var imageRef = storageRef.child('images/' + postid + '.jpg');
 
+  // Delete the file
+  imageRef.delete().then(() => {
+      // File deleted successfully
+      console.log("3. image deleted from storage");
+      alert("DELETE is completed!");
+      location.reload();
+  }).catch((error) => {
+      // Uh-oh, an error occurred!
+  });
+}
   // Add event listener to each "View More" button
   const viewMoreButtons = document.querySelectorAll(".view-more");
 

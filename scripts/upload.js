@@ -135,10 +135,6 @@ if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('i
       }
     });
   }
-  
-  
-
-
 
   function uploadPic(postDocID) {
     console.log("inside uploadPic " + postDocID);
