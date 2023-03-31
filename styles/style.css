@@ -2,6 +2,9 @@
 
 body {
     font-family: Titillium Web, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    
   }
 
 #changeinfo > div {
@@ -29,20 +32,123 @@ body {
 }
 
 .bg-dark {
-  background-color: rgb(255, 255, 121) !important;
+  background-color: #fff980 !important;
 }
 
 #logoutbtn:hover {
   cursor: pointer;
+  text-decoration: underline;
+}
+
+#homebtn:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 #footinsert {
-  position: relative;
+  position: absolute;
   bottom: 0;
   width: 100%;
+  
 }
 
 #delete-icon:hover {
   cursor: pointer;
   color: red;
 }
+
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  }
+  
+  .btn {
+  margin: 0 10px;
+  }
+
+.btn-outline-success{
+  background-color: #63a6a2  ;
+  color: white; 
+  border-color: #63a6a2  ;
+}
+
+.btn-outline-success:hover{
+  background-color: #4c8a87;
+  color: white; 
+  border-color: #4c8a87;
+}
+
+
+#post-button {
+  background-color: #8265a8 ; 
+  border-color: #8265a8 ;
+  
+}
+
+#post-button:hover {
+  background-color: #6c4f93;
+  border-color: #6c4f93;
+}
+
+.background-image {
+  background-image: url('../images/backgroundblurred.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.background2 {
+  background-image: url('../images/background2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bcit-link {
+  color: #000000;
+  text-decoration: none;
+}
+
+.bcit-link:hover {
+  color: #1100ff;
+}
+
+#bcitlinkblock a {
+  display: block;
+}
+
+.bcit-logo {
+  width: auto;
+  height: 50px;
+}
+
+
+#view-post-button{
+  color:white;
+}
+
+
+
+.post {
+  margin-bottom: 10%;
+}
+
+
+#savebutton {
+  background-color: #8265a8 ; 
+  border-color: #8265a8 ;
+  
+}
+
+#savebutton:hover {
+  background-color: #6c4f93;
+  border-color: #6c4f93;
+}
+

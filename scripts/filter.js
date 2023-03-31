@@ -84,8 +84,9 @@ function displayPosts(posts) {
       <h3 class="card-title">${post.owner}, posted at ${post.last_updated.toDate().toLocaleString()}</h3>
       <img src="${imageSrc}" class="card-img-top" alt="...">
       <div class="card-body">
-      <h5 class="card-title">${post.title}</h5>
-      <h3 class="card-title">${post.landmarkName}, ${post.transportType}</h3>
+      <h3 class="card-title">${post.title}</h3>
+      <h5 class="card-title">Landmark: ${post.landmarkName} </h5>
+      <h5 class="card-title">Transport Type: ${post.transportType}</h5>
       <p class="card-text" style="display: block;">${postDesc}</p>
       <p class="long-text" style="display: none;">${post.description}</p>
       <button class="btn btn-primary view-more" data-post-id="${post.id}">View More</button>

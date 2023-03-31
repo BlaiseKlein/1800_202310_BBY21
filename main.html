@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body class="background-image">
 
     <!------------------------------>
     <!-- Your HTML Layout go here -->
@@ -40,7 +40,8 @@
       <div id="navinsert"></div>
 
       <div class="px-4 py-5 my-5 text-center">
-        <img class="d-block mx-auto mb-4" src="/images/bcitlogo.png" alt="" width="72" height="57">
+        <img class="d-block mx-auto mb-4 bcit-logo" src="/images/bcitlogo.png" alt="">
+
         <!-- <h1 class="display-5 fw-bold">Welcome!</h1> -->
         <h1 class="display-5 fw-bold">Choose an option.</h1>
         <div class="col-lg-6 mx-auto">
@@ -48,11 +49,16 @@
                      
 
           <div class="d-flex flex-column">
-            <p class="mb-0">Upload picture: supported file types are JPG, PNG, WebP </p> 
-            <a id="upload-pic-button" class="btn btn-primary btn-lg mb-4 px-4 gap-3" href="upload.html">Upload picture</a>
-            <p class="mb-0">Click to view posts from you or other users.   </p>
-            <a id="view-post-button" class="btn btn-outline-secondary btn-lg px-4" href="postViewing.html">View posts</a>
+            <p class="mb-0">Click to create a post to share current road or bus stop conditions.</p> 
+            <a id="upload-pic-button" class="btn btn-primary btn-lg mb-4 px-4 gap-3" href="upload.html">Create a post</a>
+            <p class="mb-0">Click to view posts from you or other users.</p>
+            <a id="view-post-button" class="btn btn-primary btn-lg mb-4 px-4" href="postViewing.html">View posts</a>
+            <br>
+            <div id="bcitlinkblock">
+              <a href="https://www.bcit.ca/breaking-news/" target="_blank" class="bcit-link"><strong>Click here for official BCIT updates.</strong></a>
+            </div>
           </div>
+          
         </div>        
       </div>
 

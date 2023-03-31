@@ -63,6 +63,7 @@ function listenTransportSelect() {
         // Hide landmark select element if no valid transport type is selected
         landmarkSelect.style.display = "none";
       }
+      
     });
   }
   
@@ -134,56 +135,46 @@ if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('i
         console.log("Error, no user signed in");
       }
     });
+
   }
 
   function uploadPic(postDocID) {
     console.log("inside uploadPic " + postDocID);
   
-    if (!ImageFile) {
-      // If no image was selected, simply update the post document without adding an image field
-      db.collection("posts")
-        .doc(postDocID)
-        .update({
-          last_updated: firebase.firestore.FieldValue.serverTimestamp() //current system time
-        })
-        .then(function () {
-          console.log("Updated post without image.");
-          console.log("Redirecting to postViewing.html.");
-          window.location.href = "postViewing.html"; // Redirect the user to postViewing.html
-        })
-        .catch(function (error) {
-          console.error("Error updating post: ", error);
-        });
-  
-      return;
-    }
-  
     var storageRef = storage.ref("images/" + postDocID + ".jpg");
   
-    storageRef
-      .put(ImageFile) //global variable ImageFile
+    if (!ImageFile) {
+      // If no image was selected, set the url to the noimage.jpg file
+      var url = "images/noimage.jpg";
+    } else {
+      storageRef
+        .put(ImageFile)
+        .then(function () {
+          console.log("Uploaded to Cloud Storage.");
+          storageRef
+            .getDownloadURL()
+            .then(function (url) {
+              console.log("Got the download URL.");
+            });
+        })
+        .catch(function (error) {
+          console.log("Error uploading to Cloud Storage: ", error);
+        });
+    }
+  
+    db.collection("posts")
+      .doc(postDocID)
+      .update({
+        image: url,
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()
+      })
       .then(function () {
-        console.log("Uploaded to Cloud Storage.");
-        storageRef
-          .getDownloadURL()
-          .then(function (url) {
-            // Get URL of the uploaded file
-            console.log("Got the download URL.");
-            db.collection("posts")
-              .doc(postDocID)
-              .update({
-                image: url, // Save the URL into users collection
-                last_updated: firebase.firestore.FieldValue.serverTimestamp() //current system time
-              })
-              .then(function () {
-                console.log("Added pic URL to Firestore. Redirecting to postViewing.html.");
-                window.location.href = "postViewing.html"; // Redirect the user to postViewing.html
-              });
-          });
+        console.log("Updated post with image.");
+        console.log("Redirecting to postViewing.html.");
+        window.location.href = "postViewing.html";
       })
       .catch(function (error) {
-        console.log("Error uploading to Cloud Storage: ", error);
+        console.error("Error updating post: ", error);
       });
   }
-  
   

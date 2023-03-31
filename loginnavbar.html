@@ -27,19 +27,24 @@
           Transport Type
         </button>
         <ul class="dropdown-menu" id="transport-dropdown">
-          <li><button class="dropdown-item" type="button" data-transport="car">car</button></li>
-          <li><button class="dropdown-item" type="button" data-transport="bus">bus</button></li>
+          <li><button class="dropdown-item" type="button" data-transport="car">Car</button></li>
+          <li><button class="dropdown-item" type="button" data-transport="bus">Bus</button></li>
         </ul>
       </div>
-      <button class="btn btn-outline-success" type="button" onclick="postsNav()">View Posts</button>
-      <!-- <button class="btn btn-outline-success" id="search-button" type="button">Search</button> -->
-        <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-        <button class="btn btn-outline-success" type="button" onclick="uploadNav()">Upload</button>
+      <button class="btn btn-outline-success" type="button" onclick="myPostsNav()">My Posts</button>
+      <button class="btn btn-outline-success" type="button" onclick="postsNav()">View all Posts</button>
+
+        <button class="btn btn-outline-success" type="button" onclick="uploadNav()">Create Post</button>
+
     </form>
   </div>
 </nav>
 <div class="collapse" id="navbarToggleExternalContent">
   <div class="bg-dark p-4">
+    <div id="homediv">
+      <a id="homebtn" style="color:rgb(0, 0, 0);" href="main.html" class="material-symbols-outlined">Home</a>
+        <span class="text-muted">Home</span>
+      </div>
     <div id="settingsdiv">
     <a id="settingbtn" style="color:rgb(0, 0, 0);" href="settings.html" class="material-symbols-outlined">Settings</a>
       <span class="text-muted">User Settings</span>

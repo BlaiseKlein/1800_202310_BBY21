@@ -50,6 +50,10 @@ function loginNav(){
     window.location.assign("login.html")
 }
 
+function myPostsNav(){
+    window.location.assign("myPosts.html")
+}
+
 navstart();
 
 // loaduserinfo();
