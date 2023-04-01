@@ -101,9 +101,10 @@ body {
 #filterDrop {
   display: flex; 
   background-color: #63a6a2; 
-  height: 40px; 
+  height: 48px; 
   justify-content: right; 
-  padding-right: 5%;
+  padding-top: 6px;
+  padding-right: 2%;
 }
 
 #post-button:hover {
