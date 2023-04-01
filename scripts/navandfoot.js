@@ -5,7 +5,7 @@ function navstart(callback){
     firebase.auth().onAuthStateChanged(user => {
         if (user){
                 $("#navinsert").load("loginnavbar.html", () => {
-                    if (!window.location.toString().includes("/postViewing.html")){
+                    if (!window.location.toString().includes("/postViewing.html") && !window.location.toString().includes("/myPosts.html")){
                         document.getElementById("drop1").setAttribute("style", "display: none;")
                         document.getElementById("drop2").setAttribute("style", "display: none;")
                     } else {
