@@ -12,25 +12,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <form class="d-flex">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="drop1" style="">
-          Location
-        </button>
-        <ul class="dropdown-menu" id="location-dropdown">
-          <li><button class="dropdown-item" type="button" data-location="BCIT Bus Loop">BCIT Bus Loop</button></li>
-          <li><button class="dropdown-item" type="button" data-location="Metrotown Station">Metrotown Station</button></li>
-          <li><button class="dropdown-item" type="button" data-location="Brentwood Station">Brentwood Station</button></li>
-        </ul>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="drop2" style="">
-          Transport Type
-        </button>
-        <ul class="dropdown-menu" id="transport-dropdown">
-          <li><button class="dropdown-item" type="button" data-transport="car">Car</button></li>
-          <li><button class="dropdown-item" type="button" data-transport="bus">Bus</button></li>
-        </ul>
-      </div>
+      
       <button class="btn btn-outline-success" type="button" onclick="myPostsNav()">My Posts</button>
       <button class="btn btn-outline-success" type="button" onclick="postsNav()">View all Posts</button>
 
@@ -54,6 +36,32 @@
       <span class="text-muted">Logout</span>
     </div>
   </div>
+
+</div>
+<div id="filterDrop" style="">
+  <h2 style="color: white;">Filters</h2>
+  <form class="d-flex">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="drop1" style="">
+        Location
+      </button>
+      <ul class="dropdown-menu" id="location-dropdown">
+        <li><button class="dropdown-item" type="button" data-location="BCIT Bus Loop">BCIT Bus Loop</button></li>
+        <li><button class="dropdown-item" type="button" data-location="Metrotown Station">Metrotown Station</button></li>
+        <li><button class="dropdown-item" type="button" data-location="Brentwood Station">Brentwood Station</button></li>
+      </ul>
+    </div>
+    <h2 style="color: white;">OR</h2>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="drop2" style="">
+        Transport Type
+      </button>
+      <ul class="dropdown-menu" id="transport-dropdown">
+        <li><button class="dropdown-item" type="button" data-transport="car">Car</button></li>
+        <li><button class="dropdown-item" type="button" data-transport="bus">Bus</button></li>
+      </ul>
+    </div>
+  </form>
 </div>
 
 <script src="./scripts/logout.js"></script>

@@ -8,6 +8,7 @@ function navstart(callback){
                     if (!window.location.toString().includes("/postViewing.html") && !window.location.toString().includes("/myPosts.html")){
                         document.getElementById("drop1").setAttribute("style", "display: none;")
                         document.getElementById("drop2").setAttribute("style", "display: none;")
+                        document.getElementById("filterDrop").setAttribute("style", "display: none;")
                     } else {
                         filterSetup();
                     }

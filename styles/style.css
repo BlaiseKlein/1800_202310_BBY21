@@ -94,6 +94,18 @@ body {
   
 }
 
+#drop1, #drop2 {
+  background-color: #8265a8;
+}
+
+#filterDrop {
+  display: flex; 
+  background-color: #63a6a2; 
+  height: 40px; 
+  justify-content: right; 
+  padding-right: 5%;
+}
+
 #post-button:hover {
   background-color: #6c4f93;
   border-color: #6c4f93;
