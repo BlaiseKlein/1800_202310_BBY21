@@ -47,7 +47,7 @@ body {
 
 #footinsert {
   position: absolute;
-  bottom: 0;
+  bottom: -48px;
   width: 100%;
   
 }
