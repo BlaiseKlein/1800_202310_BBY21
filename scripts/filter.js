@@ -8,6 +8,9 @@ function filterSetup(){
   const locationDropdown = document.getElementById("location-dropdown");
 
   const transportDropdown = document.getElementById("transport-dropdown");
+
+  //Each of the 2 follow event listeners will show all posts if the "None filter is selected"
+  //Otherwise they will filter by the dropdown selection.
   transportDropdown.addEventListener("click", (event) => {
     const selectedTransport = event.target.getAttribute("data-transport");
     if (selectedTransport == "None"){
