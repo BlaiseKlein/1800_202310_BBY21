@@ -95,12 +95,25 @@ body {
 }
 
 #drop1, #drop2 {
-  background-color: #8265a8;
+  background-color: #63a6a2;
 }
+
+#drop1:hover {
+  background-color: #4c8a87;
+  color: white; 
+  border-color: #4c8a87;
+}
+
+#drop2:hover {
+  background-color: #4c8a87;
+  color: white; 
+  border-color: #4c8a87;
+}
+
 
 #filterDrop {
   display: flex; 
-  background-color: #63a6a2; 
+  background-color: #fff980 ; 
   height: 48px; 
   justify-content: right; 
   padding-top: 6px;
@@ -140,6 +153,7 @@ body {
   display: block;
 }
 
+/* Logo partially designed by Freepik, modified in Photoshop */
 .bcit-logo {
   width: auto;
   height: 200px;
@@ -171,6 +185,7 @@ body {
 .whitebox {
   background-color: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  padding: 2%;
 }
 
 #editbutton {
@@ -182,5 +197,18 @@ body {
 #editbutton:hover {
   background-color: #4c8a87;
   border-color: #4c8a87;
+}
+
+#landmark-name {
+  width: 100%;
+ 
+}
+
+#loading-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 

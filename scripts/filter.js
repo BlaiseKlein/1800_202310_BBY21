@@ -153,7 +153,7 @@ function displayPosts(posts) {
       <img src="${imageSrc}" class="card-img-top" alt="...">
       <div class="card-body">
       <h2 class="card-title">${post.title}</h2>
-      <h5 class="card-title">Landmark: ${post.landmarkName} </h5>
+      <h5 class="card-title">Location: ${post.landmarkName} </h5>
       <h5 class="card-title">Transport Type: ${post.transportType}</h5>
       <p class="card-text" style="display: block;">${postDesc}</p>
       <p class="long-text" style="display: none;">${post.description}</p>
