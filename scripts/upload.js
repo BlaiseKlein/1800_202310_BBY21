@@ -158,6 +158,22 @@ document.getElementById("loading-text").style.display = "inline-block";
     if (!ImageFile) {
       // If no image was selected, set the url to the noimage.jpg file
       var url = "images/noimage.jpg";
+  
+      // Update the post with the image information
+      db.collection("posts")
+        .doc(postDocID)
+        .update({
+          image: url,
+          last_updated: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(function () {
+          console.log("Updated post with noimage.");
+          console.log("Redirecting to postViewing.html.");
+          window.location.href = "postViewing.html";
+        })
+        .catch(function (error) {
+          console.error("Error updating post: ", error);
+        });
     } else {
       storageRef
         .put(ImageFile)
@@ -167,26 +183,31 @@ document.getElementById("loading-text").style.display = "inline-block";
             .getDownloadURL()
             .then(function (url) {
               console.log("Got the download URL.");
+  
+              // Update the post with the image information
+              db.collection("posts")
+                .doc(postDocID)
+                .update({
+                  image: url,
+                  last_updated: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                .then(function () {
+                  console.log("Updated post with image.");
+                  console.log("Redirecting to postViewing.html.");
+                  window.location.href = "postViewing.html";
+                })
+                .catch(function (error) {
+                  console.error("Error updating post: ", error);
+                });
+            })
+            .catch(function (error) {
+              console.log("Error getting download URL: ", error);
             });
         })
         .catch(function (error) {
           console.log("Error uploading to Cloud Storage: ", error);
         });
     }
-    //Updates the post with the image information.
-    db.collection("posts")
-      .doc(postDocID)
-      .update({
-        image: url,
-        last_updated: firebase.firestore.FieldValue.serverTimestamp()
-      })
-      .then(function () {
-        console.log("Updated post with image.");
-        console.log("Redirecting to postViewing.html.");
-        window.location.href = "postViewing.html";
-      })
-      .catch(function (error) {
-        console.error("Error updating post: ", error);
-      });
   }
+  
   
