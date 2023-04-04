@@ -1,4 +1,5 @@
 var currentUser;
+const postsRef = firebase.firestore().collection("posts");
 
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
@@ -73,6 +74,29 @@ function editUserInfo() {
         userTransport = "Car";
     }
 
+    // Update user's firebase account
+    const user = firebase.auth().currentUser;
+    let query = postsRef.where("owner", "==", user.displayName);
+    query.get().then((querySnapshot) => {
+        querySnapshot.forEach(async (doc) => {
+            const post = doc.data();
+            console.log(doc.id);
+            await postsRef.doc(doc.id).update({"owner": userName})
+        });
+    });
+    
+
+    user.updateProfile({
+        displayName: userName,
+      }).then(() => {
+        console.log("Update successful");
+        // ...
+      }).catch((error) => {
+        console.log("Nope");
+        // An error occurred
+        // ...
+      });  
+
     //b) update user's document in Firestore
     currentUser.update({
         name: userName,
@@ -86,4 +110,5 @@ function editUserInfo() {
     document.getElementById('personalInfoFields1').disabled = true;
     document.getElementById('personalInfoFields2').disabled = true;
     document.getElementById('personalInfoFields3').disabled = true;
+    alert("Update Complete");
 }
