@@ -148,7 +148,8 @@ function displayPosts(posts) {
     //Creates the card and adds it to the post container.
     postElement.classList.add("post");
     postElement.innerHTML = `
-      <div class="card" style="width: 29.5rem;">
+    <div class="col">
+    <div class="card" style="width: 35rem;">
       <h4 class="card-title">${post.owner}, posted at ${post.last_updated.toDate().toLocaleString()}</h4>
       <img src="${imageSrc}" class="card-img-top" alt="...">
       <div class="card-body">
@@ -157,8 +158,9 @@ function displayPosts(posts) {
       <h5 class="card-title">Transport Type: ${post.transportType}</h5>
       <p class="card-text" style="display: block;">${postDesc}</p>
       <p class="long-text" style="display: none;">${post.description}</p>
-      <button class="btn btn-primary view-more" data-post-id="${post.id}">View More</button>
+      <button class="btn btn-outline-success view-more" data-post-id="${post.id}">View More</button>
       </div>
+    </div>
     </div>
       `;
     postContainer.appendChild(postElement);

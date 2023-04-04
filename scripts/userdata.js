@@ -50,8 +50,9 @@ function populateUserInfo() {
                     }
                 })
         } else {
-            // No user is signed in.
-            console.log ("No user is signed in");
+              // set default to "None" if no value found in document
+              document.getElementById("noneTransport").setAttribute("checked", true);
+              document.getElementById("noneLocal").setAttribute("checked", true);
         }
     });
 }

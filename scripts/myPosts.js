@@ -91,19 +91,22 @@ function displayPosts(posts) {
     var postDesc = shortDesc(post.description);
     postElement.classList.add("post");
     postElement.innerHTML = `
-      <div class="card" style="width: 29.5rem;">
-      <h3 class="card-title">${post.owner}, posted at ${post.last_updated.toDate().toLocaleString()}</h3>
-      <img src="${imageSrc}" class="card-img-top" alt="...">
-      <div class="card-body">
-      <h5 class="card-title">${post.title}</h5>
-      <h3 class="card-title">${post.landmarkName}, ${post.transportType}</h3>
-      <p class="card-text" style="display: block;">${postDesc}</p>
-      <p class="long-text" style="display: none;">${post.description}</p>
-      <button class="btn btn-primary view-more" data-post-id="${post.id}">View More</button>
-      <i class="material-icons" id="delete-icon">delete</i>
+    <div class="col">
+      <div class="card" style="width: 35rem;">
+        <h3 class="card-title">${post.owner}, posted at ${post.last_updated.toDate().toLocaleString()}</h3>
+        <img src="${imageSrc}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h2 class="card-title">${post.title}</h2>
+        <h5 class="card-title">Location: ${post.landmarkName} </h5>
+        <h5 class="card-title">Transport Type: ${post.transportType}</h5>
+        <p class="card-text" style="display: block;">${postDesc}</p>
+        <p class="long-text" style="display: none;">${post.description}</p>
+        <button class="btn btn-outline-success view-more" data-post-id="${post.id}">View More</button>
+          <i class="material-icons" id="delete-icon">delete</i>
+        </div>
       </div>
     </div>
-      `;
+  `;
     postElement.querySelector('#delete-icon').onclick = () => deletePost(post.id);
     postContainer.appendChild(postElement);    
   }
@@ -119,7 +122,7 @@ function shortDesc(description){
 }
 //Delete from posts collection
 function deletePost(postid) {
-  var result = confirm("Want to delete?");
+  var result = confirm("Do you want to delete this post?");
   if (result) {
       //Logic to delete the item
       db.collection("posts").doc(postid)
@@ -142,7 +145,7 @@ function deleteFromStorage(postid) {
   imageRef.delete().then(() => {
       // File deleted successfully
       console.log("3. image deleted from storage");
-      alert("DELETE is completed!");
+      alert("Post was deleted successfully.");
       location.reload();
   }).catch((error) => {
       // Uh-oh, an error occurred!
