@@ -129,12 +129,23 @@ function deletePost(postid) {
       .delete()
       .then(() => {
           console.log("1. Document deleted from Posts collection");
-          deleteFromStorage(postid);
+          // Check if post has an image before calling deleteFromStorage()
+          db.collection("posts").doc(postid).get()
+          .then((doc) => {
+              if (doc.exists && doc.data().image) {
+                  deleteFromStorage(postid);
+              } else {
+                  console.log("3. Post does not have an image to delete");
+                  alert("Post was deleted successfully.");
+                  location.reload();
+              }
+          })
       }).catch((error) => {
           console.error("Error removing document: ", error);
       });
   }
 }
+
 
 //Delete from image storage.
 function deleteFromStorage(postid) {
@@ -167,8 +178,6 @@ function deleteFromStorage(postid) {
         event.target.parentNode.querySelector(".card-text").setAttribute("style", "display: block;");
       }
 
-      // Redirect to the post details page for the selected post
-      // window.location.href = `post.html?id=${postId}`;
     });
   }
 }

@@ -8,7 +8,7 @@ var logoutBtn = document.getElementById("logoutbtn");
 logoutBtn.addEventListener("click", function() {
   // Call the signOut() method to log the user out
   auth.signOut().then(function() {
-    // Redirect the user to the login page (or wherever you want them to go after logging out)
+    // Redirect the user to the login page
     window.location.href = "login.html";
   }).catch(function(error) {
     // Handle any errors that may occur during the sign out process

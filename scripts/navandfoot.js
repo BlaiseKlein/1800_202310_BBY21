@@ -20,24 +20,10 @@ function navstart(callback){
         }    
     });
 
-    // if (currentUser != null){
-    //     $("#navinsert").load("loginnavbar.html");
-    //     $("#footinsert").load("footer.html");
-    // } else {
-    //     $("#navinsert").load("navbar.html");
-    //     $("#footinsert").load("footer.html");
-    // }        
+
 }
 
-// function loaduserinfo(){
-//     const user = firebase.auth().currentUser;
-//     var nameElement = document.getElementById("currentname");
-//     var currentemail = document.getElementById("currentemail");
 
-//     nameElement.innerHTML = user.displayName;
-//     currentemail.innerHTML = user.email;
-//     console.log(user);
-// }
 
 function postsNav(){
     window.location.assign("postViewing.html");
@@ -57,4 +43,4 @@ function myPostsNav(){
 
 navstart();
 
-// loaduserinfo();
+

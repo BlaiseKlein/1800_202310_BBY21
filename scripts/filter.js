@@ -194,8 +194,7 @@ function shortDesc(description){
         event.target.parentNode.querySelector(".card-text").setAttribute("style", "display: block;");
       }
 
-      // Redirect to the post details page for the selected post
-      // window.location.href = `post.html?id=${postId}`;
+
     });
   }
 }
