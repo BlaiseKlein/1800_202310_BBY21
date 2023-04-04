@@ -91,14 +91,14 @@ function editUserInfo() {
     }
 
     if (document.getElementById("bus").checked){
-        userTransport = "Bus";
+        userTransport = "bus";
     } else if (document.getElementById("car").checked){
-        userTransport = "Car";
+        userTransport = "car";
     } else if (document.getElementById("noneTransport").checked){
         userTransport = "None";
     }
 
-    // Update user's firebase account
+    // Update the users posts with their new username.
     const user = firebase.auth().currentUser;
     let query = postsRef.where("owner", "==", user.displayName);
     query.get().then((querySnapshot) => {
@@ -109,7 +109,7 @@ function editUserInfo() {
         });
     });
     
-
+    //This updates the user profile on firebase.
     user.updateProfile({
         displayName: userName,
       }).then(() => {

@@ -110,9 +110,6 @@ function filterSetup(){
 
           });
         });
-
-
-
       } else {
         postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
           const allPosts = [];
@@ -148,7 +145,7 @@ function displayPosts(posts) {
       imageSrc = post.image;      
     }
     var postDesc = shortDesc(post.description);
-    
+    //Creates the card and adds it to the post container.
     postElement.classList.add("post");
     postElement.innerHTML = `
       <div class="card" style="width: 29.5rem;">
@@ -167,6 +164,7 @@ function displayPosts(posts) {
     postContainer.appendChild(postElement);
   }
 
+  //Creates a shortened version of each description, only showing 81 characters and ending in a ...
 function shortDesc(description){
   var shortenedDesc;
   if (description.length > 80){

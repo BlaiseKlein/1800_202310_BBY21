@@ -72,8 +72,7 @@ function listenTransportSelect() {
   
 
   function savePost() {
-    //alert("SAVE POST is triggered");
-  
+    //Saves the post information
     var title = document.getElementById("title").value;
     var desc = document.getElementById("description").value;
     var transportType = document.getElementById("transport-type").value;
@@ -161,7 +160,7 @@ if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('i
           console.log("Error uploading to Cloud Storage: ", error);
         });
     }
-  
+    //Updates the post with the image information.
     db.collection("posts")
       .doc(postDocID)
       .update({
