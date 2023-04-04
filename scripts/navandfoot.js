@@ -1,7 +1,8 @@
 
 
 function navstart(callback){
-
+    //Loads the login navbar if the user is logged in, and the basic navbar if they are not.
+    //Also if will hide the filters outside of the post viewing pages.
     firebase.auth().onAuthStateChanged(user => {
         if (user){
                 $("#navinsert").load("loginnavbar.html", () => {
