@@ -38,7 +38,7 @@
   <!------------------------------>
   <div id="navinsert" style="position: sticky; top: 0; z-index: 10;"></div>
 
-  <div class="container" id="uploadcontainer">
+  <div class="container whitebox" id="uploadcontainer">
     <h1>Make a Post </h1>
     <div id="error-text"></div>
     <form>
@@ -60,9 +60,9 @@
       </div>
       
       <div class="form-group">
-        <label for="landmark-name">Select landmark name: <strong>(Will show after transport type is chosen)</strong> <span style="color: red;">*Required</span></label>
+        <label for="landmark-name">Select location: <strong>(Will show after transport type is chosen)</strong> <span style="color: red;">*Required</span></label>
         <select id="landmark-name" required>
-          <option value="" selected disabled hidden>Select a landmark name</option>
+          <option value="" selected disabled hidden>Select a location</option>
         </select>
       </div>
       
@@ -76,9 +76,16 @@
         <p>Image Preview</p>
         <img id="mypic-goes-here" width="100" height="100" />
       </div>
+
       <div class="d-flex mt-5 btn-container postbutton">
-        <button id="post-button" type="button" class="btn btn-info" onclick="savePost()">Post Now</button>
+        <button id="post-button" type="button" class="btn btn-info" onclick="savePost()">
+          <span id="post-button-text">Post Now<span id="loading-text" style="display:none"> Loading...</span></span>
+
+          <div id="post-button-spinner" class="spinner-border spinner-border-sm text-light ml-2" role="status" style="display:none">
+          </div>
+        </button>
       </div>
+      
     </form>
   </div>
 

@@ -41,10 +41,13 @@
       
       <!-- The surrounding HTML is left untouched by FirebaseUI.
      Your app may use that space for branding, controls and other customizations.-->
-      <h1 class="login-welcome">Welcome to Transit Talk BCIT!</h1>
-      <p class="login-welcome">This app will allow you to post pictures of road and bus stop conditions going to and from BCIT Burnaby Campus. You can also view posts at anytime.</p>
+     <div class="whitebox">
+      <h1 class="login-welcome">Login to Transit Talk BCIT</h1>
+      <img class="d-block mx-auto mb-4 bcit-logo" src="/images/bcitlogo.png" alt="">
+      <p class="login-welcome">This is a web app to help BCIT Burnaby campus commuters easily share info about road and bus stop conditions going to and from BCIT Burnaby Campus. You can also view posts at anytime.</p>
       <div id="firebaseui-auth-container"></div>
       <div id="loader">Loading...</div>
+    </div>
 
 
       <div id="footinsert"></div>
@@ -54,7 +57,7 @@
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
+  
     <script src="./scripts/firebasesetup.js"></script>
     <script src="./scripts/authentication.js"></script>
     <script src="./scripts/navandfoot.js"></script>

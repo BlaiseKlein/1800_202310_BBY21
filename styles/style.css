@@ -47,7 +47,7 @@ body {
 
 #footinsert {
   position: absolute;
-  bottom: -48px; /*THIS WAS CHANGED TEMP*/
+  bottom: -40px; 
   width: 100%;
   
 }
@@ -95,12 +95,25 @@ body {
 }
 
 #drop1, #drop2 {
-  background-color: #8265a8;
+  background-color: #63a6a2;
 }
+
+#drop1:hover {
+  background-color: #4c8a87;
+  color: white; 
+  border-color: #4c8a87;
+}
+
+#drop2:hover {
+  background-color: #4c8a87;
+  color: white; 
+  border-color: #4c8a87;
+}
+
 
 #filterDrop {
   display: flex; 
-  background-color: #63a6a2; 
+  background-color: #fff980 ; 
   height: 48px; 
   justify-content: right; 
   padding-top: 6px;
@@ -112,16 +125,19 @@ body {
   border-color: #6c4f93;
 }
 
+
+/* Background from BCIT official website (Creative Commons License), modified in Photoshop */
 .background-image {
   background-image: url('../images/backgroundblurred.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+/* Background designed by colli13designs from Pixabay, modified in Photoshop */
 .background2 {
   background-image: url('../images/background2.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: repeat;
+  background-size: fit;
 }
 
 .bcit-link {
@@ -137,9 +153,10 @@ body {
   display: block;
 }
 
+/* Logo partially designed by Freepik, modified in Photoshop */
 .bcit-logo {
   width: auto;
-  height: 50px;
+  height: 200px;
 }
 
 
@@ -164,4 +181,42 @@ body {
   background-color: #6c4f93;
   border-color: #6c4f93;
 }
+
+.whitebox {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  padding: 2%;
+}
+
+#editbutton {
+  background-color: #63a6a2  ; 
+  border-color: #63a6a2 ;
+}
+
+
+#editbutton:hover {
+  background-color: #4c8a87;
+  border-color: #4c8a87;
+}
+
+#landmark-name {
+  width: 100%;
+ 
+}
+
+#loading-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+
+.card {
+  border: 10px solid rgba(255, 249, 128, 0.15);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
+  padding:2%;
+}
+
 

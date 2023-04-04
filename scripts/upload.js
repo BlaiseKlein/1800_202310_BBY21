@@ -38,7 +38,7 @@ function listenTransportSelect() {
       var transportType = e.target.value;
         
       // Clear landmark select options
-      landmarkSelect.innerHTML = '<option value="" selected disabled hidden>Select a landmark name</option>';
+      landmarkSelect.innerHTML = '<option value="" selected disabled hidden>Select a location</option>';
     
       // Add options based on transport type and show landmark select element
       if (transportType === "bus") {
@@ -72,7 +72,6 @@ function listenTransportSelect() {
   
 
   function savePost() {
-    //Saves the post information
     var title = document.getElementById("title").value;
     var desc = document.getElementById("description").value;
     var transportType = document.getElementById("transport-type").value;
@@ -86,12 +85,20 @@ function listenTransportSelect() {
       return;
     }
   
-// Check if the image file type is valid
-if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('image/png') && !ImageFile.type.match('image/webp')) {
-  alert('Please select a valid image file (JPG, PNG or WEBP)');
-  return;
-}
+// Show loading spinner and text
+var postButton = document.getElementById("post-button");
+var postButtonText = document.getElementById("post-button-text");
+var postButtonSpinner = document.getElementById("post-button-spinner");
+postButtonText.style.display = "none";
+postButtonSpinner.style.display = "inline-block";
+document.getElementById("loading-text").style.display = "inline-block";
 
+  
+    // Check if the image file type is valid
+    if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('image/png') && !ImageFile.type.match('image/webp')) {
+      alert('Please select a valid image file (JPG, PNG or WEBP)');
+      return;
+    }
   
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
@@ -120,10 +127,15 @@ if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('i
                 console.log("Post document added!");
                 console.log(doc.id);
                 uploadPic(doc.id); // Upload image after the post is added
-               
               })
               .catch(function (error) {
                 console.error("Error adding document: ", error);
+              })
+              .finally(function () {
+                // Hide loading spinner and text
+                postButtonText.style.display = "inline-block";
+                postButtonSpinner.style.display = "none";
+                document.getElementById("loading-text").style.display = "none";
               });
           });
         } else {
@@ -134,8 +146,9 @@ if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('i
         console.log("Error, no user signed in");
       }
     });
-
   }
+  
+  
 
   function uploadPic(postDocID) {
     console.log("inside uploadPic " + postDocID);
@@ -145,6 +158,22 @@ if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('i
     if (!ImageFile) {
       // If no image was selected, set the url to the noimage.jpg file
       var url = "images/noimage.jpg";
+  
+      // Update the post with the image information
+      db.collection("posts")
+        .doc(postDocID)
+        .update({
+          image: url,
+          last_updated: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(function () {
+          console.log("Updated post with noimage.");
+          console.log("Redirecting to postViewing.html.");
+          window.location.href = "postViewing.html";
+        })
+        .catch(function (error) {
+          console.error("Error updating post: ", error);
+        });
     } else {
       storageRef
         .put(ImageFile)
@@ -154,26 +183,31 @@ if (ImageFile && !ImageFile.type.match('image/jpeg') && !ImageFile.type.match('i
             .getDownloadURL()
             .then(function (url) {
               console.log("Got the download URL.");
+  
+              // Update the post with the image information
+              db.collection("posts")
+                .doc(postDocID)
+                .update({
+                  image: url,
+                  last_updated: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                .then(function () {
+                  console.log("Updated post with image.");
+                  console.log("Redirecting to postViewing.html.");
+                  window.location.href = "postViewing.html";
+                })
+                .catch(function (error) {
+                  console.error("Error updating post: ", error);
+                });
+            })
+            .catch(function (error) {
+              console.log("Error getting download URL: ", error);
             });
         })
         .catch(function (error) {
           console.log("Error uploading to Cloud Storage: ", error);
         });
     }
-    //Updates the post with the image information.
-    db.collection("posts")
-      .doc(postDocID)
-      .update({
-        image: url,
-        last_updated: firebase.firestore.FieldValue.serverTimestamp()
-      })
-      .then(function () {
-        console.log("Updated post with image.");
-        console.log("Redirecting to postViewing.html.");
-        window.location.href = "postViewing.html";
-      })
-      .catch(function (error) {
-        console.error("Error updating post: ", error);
-      });
   }
+  
   

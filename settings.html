@@ -40,18 +40,19 @@
       
     <div id="navinsert" style="position: sticky; top: 0; z-index: 10;"></div>
 
-    <div class="container">
+    <div class="container whitebox">
       <h1>User Profile </h1>
       <form>
           <fieldset class="mb-3" id="personalInfoFields1" disabled>
               <div class="form-group">
                 <p><strong>Click "Edit" to make changes.</strong></p>
-                  <label>Enter your name</label>
-                  <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                  <label>Enter your username.</label>
+                  <input type="text" id="nameInput" class="form-control" placeholder="Enter your username">
               </div>
           </fieldset>
               <div class="form-group">
-                  <div>Choose your default location filters</div>
+                  <div>Choose your default location filters.</div>
+                  <br>
                   <!-- <input type="dropdown" id="locationInput" class="form-control" placeholder="Choose your location"> -->
                   <fieldset class="mb-3" id="personalInfoFields2" disabled><div>
                     <input type="radio" id="brentwood" class="locationInput" class="form-control" name="locationInput">
@@ -85,8 +86,10 @@
                   </div>
                 </fieldset>
               </div>
+              <br>
               <div class="form-group">
-                  <div>Choose your default transport filters.<br/> This will be used when you have default location</div>
+                  <div>Choose your default transport filters.<br/> This will be used when you have a default location.</div>
+                  <br>
                   <fieldset class="mb-3" id="personalInfoFields3" disabled><div>
                     <input type="radio" id="bus" class="transportInput" class="form-control" value="Bus" name="transportInput">
                     <label for="bus">Bus</label>
@@ -100,70 +103,14 @@
                 </fieldset>
               </div>
           </fieldset>
-          <div class="d-flex justify-content-center mt-5 btn-container">
+          <div class="d-flex justify-content-center mt-5 btn-container ">
               <button type="button" class="btn btn-secondary" id="editbutton" onclick="editUserInfo()">Edit</button>
               <span style="width: 10px"></span>
               <button type="button" class="btn btn-info" id="savebutton" onclick="saveUserInfo()">Save</button>
           </div>
       </form>
 </div>
-  <!-- stuf -->
-      <!-- <div id="userinfo">
-        <form id="changeinfo">
-          <div id="changename">
-            <p id="currentname"></p>
-            <label for="username">Change your display name</label>
-            <input name="username" type="text" id="usernameinput" /> <br/>
-            <input type="submit" value="Update User Name">
-          </div>
-          <div id="changeemail">
-            <p id="currentemail"></p>
-            <label for="email">Enter your new email</label>
-            <input name="email" type="text" id="emailinput" /> <br/>
-            <input type="submit" value="Update Email">
-          </div>
-          <div id="transport">
-            <span>Check what types of transport you want notifications for.</span> <br/>
-            <div>
-              <input name="commutetype" type="checkbox" id="bus">
-              <label for="bus">Bus</label>
-            </div> 
-            <div>
-              <input name="commutetype" type="checkbox" id="car">
-              <label for="car">Car</label>
-            </div>
-            <div>
-              <input type="submit" value="Update Transport Notifications">
-            </div>
-          </div>
-          <div id="locale">
-            <span>Check what locations you want notifications for.</span> <br/>
-            <div>
-              <input name="commutetype" type="checkbox" id="bcit">
-              <label for="bcit">British Columbia Institue of Technology</label>
-            </div>
-            <div>
-              <input name="commutetype" type="checkbox" id="brentwood">
-              <label for="brentwood">Brentwood Station</label>
-            </div>
-            <div>
-              <input name="commutetype" type="checkbox" id="metrotown">
-              <label for="metrotown">Metrotown Station</label>
-            </div>
-            <div>
-              <input name="commutetype" type="checkbox" id="high1">
-              <label for="high1">Trans Canada Highway (Highway 1)</label>
-            </div>
-            <div>
-              <input name="commutetype" type="checkbox" id="willingdon">
-              <label for="willingdon">Willingdon Avenue</label>
-            </div>
-            <div>
-              <input type="submit" value="Update Location Notifications">
-            </div>
-          </div>
-        </form>
-      </div> -->
+ 
 
       <div id="footinsert"></div>
 
@@ -172,7 +119,7 @@
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
+ 
     <script src="./scripts/firebasesetup.js"></script>
     <script src="./scripts/userdata.js"></script>
     <script src="./scripts/navandfoot.js"></script>
