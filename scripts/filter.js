@@ -10,6 +10,22 @@ function filterSetup(){
   const transportDropdown = document.getElementById("transport-dropdown");
   transportDropdown.addEventListener("click", (event) => {
     const selectedTransport = event.target.getAttribute("data-transport");
+    if (selectedTransport == "None"){
+    postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+      const allPosts = [];
+      querySnapshot.forEach((doc) => {
+        // Extract the document data into a post object
+        const post = doc.data();
+        post.id = doc.id;
+        allPosts.push(post);
+      });
+
+      // Call the displayPosts function with the array of all post objects
+      displayPosts(allPosts);
+    });
+  } else {
+
+
     // Create a new query that filters by the selected transport type
     let query = postsRef.where("transportType", "==", selectedTransport);
     query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
@@ -24,10 +40,30 @@ function filterSetup(){
       // Call the displayPosts function with the array of post objects
       displayPosts(filteredPosts);
     });
+  }
+
+    
   });
 
   locationDropdown.addEventListener("click", (event) => {
     const selectedLocation = event.target.getAttribute("data-location");
+
+    if (selectedLocation == "None"){
+
+      postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+        const allPosts = [];
+        querySnapshot.forEach((doc) => {
+          // Extract the document data into a post object
+          const post = doc.data();
+          post.id = doc.id;
+          allPosts.push(post);
+        });
+  
+        // Call the displayPosts function with the array of all post objects
+        displayPosts(allPosts);
+      });
+    } else {
+    
 
     // Create a new query that filters by the selected location
     let query = postsRef.where("landmarkName", "==", selectedLocation);
@@ -43,6 +79,7 @@ function filterSetup(){
       // Call the displayPosts function with the array of post objects
       displayPosts(filteredPosts);
     });
+  }
   });
 }
   // Function to display all the posts on the page initially
