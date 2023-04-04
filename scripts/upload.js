@@ -42,7 +42,7 @@ function listenTransportSelect() {
     
       // Add options based on transport type and show landmark select element
       if (transportType === "bus") {
-        var busLandmarks = ["Metrotown Station", "Brentwood Station", "Joyce Station"];
+        var busLandmarks = ["Metrotown", "Brentwood", "BCIT"];
         for (var i = 0; i < busLandmarks.length; i++) {
           var option = document.createElement("option");
           option.text = busLandmarks[i];

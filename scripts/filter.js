@@ -1,4 +1,4 @@
-// Get a reference to the posts collection in Firebase
+// Get a reference to the posts and users collection in Firebase
 const postsRef = firebase.firestore().collection("posts");
 const userRef = firebase.firestore().collection("users");
 
@@ -12,7 +12,6 @@ function filterSetup(){
     const selectedTransport = event.target.getAttribute("data-transport");
     // Create a new query that filters by the selected transport type
     let query = postsRef.where("transportType", "==", selectedTransport);
-
     query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
       const filteredPosts = [];
       querySnapshot.forEach((doc) => {
@@ -47,19 +46,91 @@ function filterSetup(){
   });
 }
   // Function to display all the posts on the page initially
+  //It checks if the user has preset filter values and tries to display those first.
+  // It checks for a user location preference, then a user transport type preference.
   function displayAllPosts() {
-    postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
-      const allPosts = [];
-      querySnapshot.forEach((doc) => {
-        // Extract the document data into a post object
-        const post = doc.data();
-        post.id = doc.id;
-        allPosts.push(post);
-      });
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
 
-      // Call the displayPosts function with the array of all post objects
-      displayPosts(allPosts);
+        userRef.where("uid", "==", user.uid).get().then((querySnapshot) =>{
+          querySnapshot.forEach((doc) => {
+            const info = doc.data();
+            const local = info.location;
+            const transport = info.transport;
+            console.log(user.uid);
+            console.log(local);
+            console.log(transport);
+
+            //If the user has a location, show only those posts.
+            if (local != "None"){
+              let query = postsRef.where("landmarkName", "==", local);
+              query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+                const filteredPosts = [];
+                querySnapshot.forEach((doc) => {
+                  // Extract the document data into a post object
+                  const post = doc.data();
+                  post.id = doc.id;
+                  filteredPosts.push(post);
+                });
+
+                // Call the displayPosts function with the array of post objects
+                displayPosts(filteredPosts);
+              }); 
+              //If the user has a transport type insread, show only those posts.
+            } else if (transport != "None"){
+              let query = postsRef.where("transportType", "==", transport);
+              query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+                const filteredPosts = [];
+                querySnapshot.forEach((doc) => {
+                  // Extract the document data into a post object
+                  const post = doc.data();
+                  post.id = doc.id;
+                  filteredPosts.push(post);
+                });
+          
+                // Call the displayPosts function with the array of post objects
+                displayPosts(filteredPosts);
+              });
+            } else {
+              //If they both have None just print all the posts.
+              postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+                const allPosts = [];
+                querySnapshot.forEach((doc) => {
+                  // Extract the document data into a post object
+                  const post = doc.data();
+                  post.id = doc.id;
+                  allPosts.push(post);
+                });
+          
+                // Call the displayPosts function with the array of all post objects
+                displayPosts(allPosts);
+              });
+            }
+
+
+          });
+        });
+
+
+
+      } else {
+        postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+          const allPosts = [];
+          querySnapshot.forEach((doc) => {
+            // Extract the document data into a post object
+            const post = doc.data();
+            post.id = doc.id;
+            allPosts.push(post);
+          });
+    
+          // Call the displayPosts function with the array of all post objects
+          displayPosts(allPosts);
+        });
+      }
+    
     });
+
+    
   }
 // Function to display the posts on the page
 function displayPosts(posts) {
@@ -81,10 +152,10 @@ function displayPosts(posts) {
     postElement.classList.add("post");
     postElement.innerHTML = `
       <div class="card" style="width: 29.5rem;">
-      <h3 class="card-title">${post.owner}, posted at ${post.last_updated.toDate().toLocaleString()}</h3>
+      <h4 class="card-title">${post.owner}, posted at ${post.last_updated.toDate().toLocaleString()}</h4>
       <img src="${imageSrc}" class="card-img-top" alt="...">
       <div class="card-body">
-      <h3 class="card-title">${post.title}</h3>
+      <h2 class="card-title">${post.title}</h2>
       <h5 class="card-title">Landmark: ${post.landmarkName} </h5>
       <h5 class="card-title">Transport Type: ${post.transportType}</h5>
       <p class="card-text" style="display: block;">${postDesc}</p>

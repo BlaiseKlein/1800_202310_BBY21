@@ -51,7 +51,7 @@
               </div>
           </fieldset>
               <div class="form-group">
-                  <div>Choose your travel location</div>
+                  <div>Choose your default location filters</div>
                   <!-- <input type="dropdown" id="locationInput" class="form-control" placeholder="Choose your location"> -->
                   <fieldset class="mb-3" id="personalInfoFields2" disabled><div>
                     <input type="radio" id="brentwood" class="locationInput" class="form-control" name="locationInput">
@@ -79,17 +79,25 @@
                     <input type="radio" id="Lougheed" class="locationInput" class="form-control" name="locationInput">
                     <label for="Lougheed">Lougheed</label>
                   </div>
+                  <div>
+                    <input type="radio" id="noneLocal" class="locationInput" class="form-control" name="locationInput">
+                    <label for="noneLocal">None</label>
+                  </div>
                 </fieldset>
               </div>
               <div class="form-group">
-                  <div>Choose your transport type</div>
+                  <div>Choose your default transport filters.<br/> This will be used when you have default location</div>
                   <fieldset class="mb-3" id="personalInfoFields3" disabled><div>
                     <input type="radio" id="bus" class="transportInput" class="form-control" value="Bus" name="transportInput">
                     <label for="bus">Bus</label>
                   </div><div>
                     <input type="radio" id="car" class="transportInput" class="form-control" value="Car" name="transportInput">
                     <label for="car">Car</label>
-                  </div></fieldset>
+                  </div><div>
+                    <input type="radio" id="noneTransport" class="transportInput" class="form-control" value="None" name="transportInput">
+                    <label for="noneTransport">None</label>
+                  </div>
+                </fieldset>
               </div>
           </fieldset>
           <div class="d-flex justify-content-center mt-5 btn-container">

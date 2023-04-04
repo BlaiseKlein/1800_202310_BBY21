@@ -27,6 +27,16 @@ function populateUserInfo() {
                             document.getElementById("metrotown").setAttribute("checked", true);
                         } else if (userLocation == "BCIT"){
                             document.getElementById("bcit").setAttribute("checked", true);
+                        }  else if (userLocation == "highway1"){
+                            document.getElementById("Highway 1").setAttribute("checked", true);
+                        }  else if (userLocation == "canada way"){
+                            document.getElementById("Canada Way").setAttribute("checked", true);
+                        }  else if (userLocation == "Willingdon"){
+                            document.getElementById("willingdon").setAttribute("checked", true);
+                        }  else if (userLocation == "Lougheed"){
+                            document.getElementById("Lougheed").setAttribute("checked", true);
+                        } else if (userLocation == "None"){
+                            document.getElementById("noneLocal").setAttribute("checked", true);
                         }
                     }
                     if (userTransport != null) {
@@ -34,6 +44,8 @@ function populateUserInfo() {
                             document.getElementById("bus").setAttribute("checked", true);
                         } else if (userTransport == "Car"){
                             document.getElementById("car").setAttribute("checked", true);
+                        } else if (userTransport == "None"){
+                            document.getElementById("noneTransport").setAttribute("checked", true);
                         }
                     }
                 })
@@ -66,12 +78,24 @@ function editUserInfo() {
         userLocation = "Metrotown";
     } else if (document.getElementById("bcit").checked){
         userLocation = "BCIT";
+    } else if (document.getElementById("highway1").checked){
+        userLocation = "Highway 1";
+    } else if (document.getElementById("canada way").checked){
+        userLocation = "Canada Way";
+    } else if (document.getElementById("Willingdon").checked){
+        userLocation = "Willingdown";
+    } else if (document.getElementById("Lougheed").checked){
+        userLocation = "Lougheed";
+    } else if (document.getElementById("noneLocal").checked){
+        userLocation = "None";
     }
 
     if (document.getElementById("bus").checked){
         userTransport = "Bus";
     } else if (document.getElementById("car").checked){
         userTransport = "Car";
+    } else if (document.getElementById("noneTransport").checked){
+        userTransport = "None";
     }
 
     // Update user's firebase account
