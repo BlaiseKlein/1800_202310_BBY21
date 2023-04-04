@@ -112,12 +112,15 @@ body {
   border-color: #6c4f93;
 }
 
+
+/* Background from BCIT official website (Creative Commons License), modified in Photoshop */
 .background-image {
   background-image: url('../images/backgroundblurred.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+/* Background designed by colli13designs from Pixabay, modified in Photoshop */
 .background2 {
   background-image: url('../images/background2.jpg');
   background-repeat: no-repeat;
@@ -139,7 +142,7 @@ body {
 
 .bcit-logo {
   width: auto;
-  height: 50px;
+  height: 200px;
 }
 
 
@@ -165,3 +168,7 @@ body {
   border-color: #6c4f93;
 }
 
+.whitebox {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
