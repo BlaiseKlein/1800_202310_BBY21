@@ -50,6 +50,15 @@ Content of the project folder:
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing HTML file, this is what users see when you come to url
+├── main.html                # The main HTML page that users get to after they login.
+├── login.html               # The login HTML page that uses firebase to login.
+├── navbar.html              # The HTML navbar loaded onto all pages when no user is logged in.
+├── footer.html              # The HTML footer loaded onto all pages.
+├── loginnavbar.html         # The HTML navbar loaded onto all pages when a user is logged in.
+├── myPosts.html             # An HTML page that shows all posts made by the currently logged in user, queries firestore.
+├── postViewing.html         # The HTML page that shows all the user posts and allows them to filtered, queries firestore.
+├── settings.html            # The HTML page that shows the user settings and allows their filters and name to be changed, queries firestore.
+├── upload.html              # The HTML page that allows users to upload posts, stores on firestore.
 └── README.md
 
 It has the following subfolders and files:
@@ -57,9 +66,17 @@ It has the following subfolders and files:
 ├── images                   # Folder for images
     /blah.jpg                # Acknowledge source
 ├── scripts                  # Folder for scripts
-    /blah.js                 # 
+    /authentication.js       # Login authentication JS file, uses firebase.
+    /database.js             # UNUSED
+    /filter.js               # Filter system JS file used in postViewing.html, uses firestore
+    /logout.js               # User logout system, uses firebase.
+    /myPosts.js              # User post display system, JS file that uses firestore.
+    /firebasesetup.js        # JS File, API keys used for firebase, included in .gitignore
+    /navandfoot.js           # JS FIle that Loads the navbar and footer onto all pages.
+    /upload.js               # JS File that allows users to upload posts, uses firestore.
+    /userdata.js             # JS File that manages the settings page, allows changes to firestore from user input.
 ├── styles                   # Folder for styles
-    /blah.css                # 
+    /style.css               # The CSS used across all HTML pages. 
 
 
 
