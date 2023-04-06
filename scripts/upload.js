@@ -85,13 +85,12 @@ function listenTransportSelect() {
       return;
     }
   
-// Show loading spinner and text
+// Show loading spinner
 var postButton = document.getElementById("post-button");
 var postButtonText = document.getElementById("post-button-text");
 var postButtonSpinner = document.getElementById("post-button-spinner");
 postButtonText.style.display = "none";
 postButtonSpinner.style.display = "inline-block";
-document.getElementById("loading-text").style.display = "inline-block";
 
   
     // Check if the image file type is valid
@@ -132,10 +131,10 @@ document.getElementById("loading-text").style.display = "inline-block";
                 console.error("Error adding document: ", error);
               })
               .finally(function () {
-                // Hide loading spinner and text
+                // Hide loading spinner
                 postButtonText.style.display = "inline-block";
                 postButtonSpinner.style.display = "none";
-                document.getElementById("loading-text").style.display = "none";
+                
               });
           });
         } else {
