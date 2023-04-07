@@ -38,6 +38,7 @@ Here are some known bugs or limitations:
 * No check on character limit 
 * No check on file size
 * Cannot put both a transport filter AND a location filter on at the same time when viewing posts.
+* In settings.html, changing the form options to have one class only like class="locationInput form-control" results in the buttons becoming too big.
 
 ## 6. Features for Future
 What we'd like to build in the future:
