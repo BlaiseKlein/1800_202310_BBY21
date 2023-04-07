@@ -67,7 +67,6 @@ It has the following subfolders and files:
     /blah.jpg                # Acknowledge source
 ├── scripts                  # Folder for scripts
     /authentication.js       # Login authentication JS file, uses firebase.
-    /database.js             # UNUSED
     /filter.js               # Filter system JS file used in postViewing.html, uses firestore
     /logout.js               # User logout system, uses firebase.
     /myPosts.js              # User post display system, JS file that uses firestore.
