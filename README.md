@@ -17,9 +17,11 @@ List technologies (with version numbers), API's, icons, fonts, images, media or 
 * HTML, CSS, JavaScript
 * Bootstrap 5.0 (Frontend library)
 * Firebase 8.0 (BAAS - Backend as a Service)
-* Titillium Web font
+* Titillium Web Font
+* Google Material Icons
+* Google Material Symbols
 * Train used in logo: Freepik.com. The logo has been designed using assets from Freepik.com.
-* Backgroundblurred.jpg: Background from BCIT official website (Creative Commons License), modified in Photoshop.
+* Backgroundblurred.jpg: Background from https://www.wallpaperflare.com/, modified in Photoshop.
 * Background2.jpg: Background designed by colli13designs from Pixabay, modified in Photoshop. License: No attribution required.
 
 ## 4. Complete setup/installion/usage
@@ -32,7 +34,7 @@ Here are the steps ...
 * When you view posts, you can filter them by location or by transport type. You can set personal preferences by clicking on the dropdown menu on the top left, and clicking User Settings.
 
 ## 5. Known Bugs and Limitations
-Here are some known bugs:
+Here are some known bugs or limitations:
 * No check on character limit 
 * No check on file size
 * Cannot put both a transport filter AND a location filter on at the same time when viewing posts.
@@ -64,7 +66,11 @@ Content of the project folder:
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
-    /blah.jpg                # Acknowledge source
+    /backgroundblurred.jpg   # [BCIT Campus Photograph]. Wallpaperflare. https://www.wallpaperflare.com burnaby-canada-british-columbia-institute-of-technology-bcit-wallpaper-eiuek
+    /background2.jpg         # [White pattern background digital illustration]. Pixabay. https://pixabay.com/illustrations/geometric-triangle-modern-mosaic-1906240/
+    /bcitlogo.png            # [Train digital illustration.] Freepik. https://www.freepik.com/free-vector/abstract-high-speed-train-logo_789917.htm#query=train%20logo&position=1&from_view=search&track=ais
+    /noimage.jpg             # [Train digital illustration.] Freepik. https://www.freepik.com/free-vector/abstract-high-speed-train-logo_789917.htm#query=train%20logo&position=1&from_view=search&track=ais
+
 ├── scripts                  # Folder for scripts
     /authentication.js       # Login authentication JS file, uses firebase.
     /filter.js               # Filter system JS file used in postViewing.html, uses firestore
