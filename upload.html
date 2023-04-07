@@ -36,63 +36,58 @@
   <!------------------------------>
   <!-- Your HTML Layout go here -->
   <!------------------------------>
+
   <div id="navinsert" style="position: sticky; top: 0; z-index: 10;"></div>
-
-  <div class="container whitebox" id="uploadcontainer">
-    <h1>Make a Post </h1>
-    <div id="error-text"></div>
-    <form>
-      <div class="form-group">
-        <label for="title">Title <span style="color: red;">*Required</span></label>
-        <textarea id="title" rows="1" cols="50" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="description">Description <span style="color: red;">*Required</span></label>
-        <textarea id="description" rows="4" cols="50" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="transport-type">Select transport type: <span style="color: red;">*Required</span></label>
-        <select id="transport-type" required>
-          <option value="" selected disabled hidden>Select a transport type</option>
-          <option value="car">Car</option>
-          <option value="bus">Bus</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="landmark-name">Select location: <strong>(Will show after transport type is chosen)</strong> <span style="color: red;">*Required</span></label>
-        <select id="landmark-name" required>
-          <option value="" selected disabled hidden>Select a location</option>
-        </select>
-      </div>
-      
-      
-      <div class="container py-3">
-        <p>Select PNG, JPG or .WEBP image to upload (Optional):</p>
-        <input type="file" id="mypic-input" accept="image/*" />
-        <br>
-        <br>
-        <br>
-        <p>Image Preview</p>
-        <img id="mypic-goes-here" width="100" height="100" />
-      </div>
-
-      <div class="d-flex mt-5 btn-container postbutton">
-        <button id="post-button" type="button" class="btn btn-info" onclick="savePost()">
-          <span id="post-button-text">Post Now</span>
-
-          <div id="post-button-spinner" class="spinner-border spinner-border-sm text-light ml-2" role="status" style="display:none">
-          </div>
-        </button>
-      </div>
-      
-    </form>
-  </div>
-
-
-
-  <div id="footinsert"></div>
-
+ <div class="container whitebox" id="uploadcontainer">
+   <h1>Make a Post </h1>
+   <div id="error-text"></div>
+   <form>
+     <div class="form-group">
+       <label for="title">Title <span style="color: red;">*Required</span>
+       </label>
+       <textarea id="title" rows="1" cols="50" required></textarea>
+     </div>
+     <div class="form-group">
+       <label for="description">Description <span style="color: red;">*Required</span>
+       </label>
+       <textarea id="description" rows="4" cols="50" required></textarea>
+     </div>
+     <div class="form-group">
+       <label for="transport-type">Select transport type: <span style="color: red;">*Required</span>
+       </label>
+       <select id="transport-type" required>
+         <option value="" selected disabled hidden>Select a transport type</option>
+         <option value="car">Car</option>
+         <option value="bus">Bus</option>
+       </select>
+     </div>
+     <div class="form-group">
+       <label for="landmark-name">Select location: <strong>(Will show after transport type is chosen)</strong>
+         <span style="color: red;">*Required</span>
+       </label>
+       <select id="landmark-name" required>
+         <option value="" selected disabled hidden>Select a location</option>
+       </select>
+     </div>
+     <div class="container py-3">
+       <p>Select PNG, JPG or .WEBP image to upload (Optional):</p>
+       <input type="file" id="mypic-input" accept="image/*" />
+       <br>
+       <br>
+       <br>
+       <p>Image Preview</p>
+       <img id="mypic-goes-here" width="100" height="100" />
+     </div>
+     <div class="d-flex mt-5 btn-container postbutton">
+       <button id="post-button" type="button" class="btn btn-info" onclick="savePost()">
+         <span id="post-button-text">Post Now</span>
+         <div id="post-button-spinner" class="spinner-border spinner-border-sm text-light ml-2" role="status" style="display:none"></div>
+       </button>
+     </div>
+   </form>
+ </div>
+ <div id="footinsert"></div>
+ 
   <!---------------------------------------------->
   <!-- Your own JavaScript functions go here    -->
   <!---------------------------------------------->

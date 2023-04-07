@@ -2,7 +2,7 @@
 const postsRef = firebase.firestore().collection("posts");
 const userRef = firebase.firestore().collection("users");
 
-function filterSetup(){
+function filterSetup() {
 
   // Add event listener to the location dropdown menu
   const locationDropdown = document.getElementById("location-dropdown");
@@ -13,45 +13,45 @@ function filterSetup(){
   //Otherwise they will filter by the dropdown selection.
   transportDropdown.addEventListener("click", (event) => {
     const selectedTransport = event.target.getAttribute("data-transport");
-    if (selectedTransport == "None"){
-    postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
-      const allPosts = [];
-      querySnapshot.forEach((doc) => {
-        // Extract the document data into a post object
-        const post = doc.data();
-        post.id = doc.id;
-        allPosts.push(post);
+    if (selectedTransport == "None") {
+      postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+        const allPosts = [];
+        querySnapshot.forEach((doc) => {
+          // Extract the document data into a post object
+          const post = doc.data();
+          post.id = doc.id;
+          allPosts.push(post);
+        });
+
+        // Call the displayPosts function with the array of all post objects
+        displayPosts(allPosts);
       });
-
-      // Call the displayPosts function with the array of all post objects
-      displayPosts(allPosts);
-    });
-  } else {
+    } else {
 
 
-    // Create a new query that filters by the selected transport type
-    let query = postsRef.where("transportType", "==", selectedTransport);
-    query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
-      const filteredPosts = [];
-      querySnapshot.forEach((doc) => {
-        // Extract the document data into a post object
-        const post = doc.data();
-        post.id = doc.id;
-        filteredPosts.push(post);
+      // Create a new query that filters by the selected transport type
+      let query = postsRef.where("transportType", "==", selectedTransport);
+      query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+        const filteredPosts = [];
+        querySnapshot.forEach((doc) => {
+          // Extract the document data into a post object
+          const post = doc.data();
+          post.id = doc.id;
+          filteredPosts.push(post);
+        });
+
+        // Call the displayPosts function with the array of post objects
+        displayPosts(filteredPosts);
       });
+    }
 
-      // Call the displayPosts function with the array of post objects
-      displayPosts(filteredPosts);
-    });
-  }
 
-    
   });
 
   locationDropdown.addEventListener("click", (event) => {
     const selectedLocation = event.target.getAttribute("data-location");
 
-    if (selectedLocation == "None"){
+    if (selectedLocation == "None") {
 
       postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
         const allPosts = [];
@@ -61,114 +61,114 @@ function filterSetup(){
           post.id = doc.id;
           allPosts.push(post);
         });
-  
+
         // Call the displayPosts function with the array of all post objects
         displayPosts(allPosts);
       });
     } else {
-    
 
-    // Create a new query that filters by the selected location
-    let query = postsRef.where("landmarkName", "==", selectedLocation);
-    query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
-      const filteredPosts = [];
-      querySnapshot.forEach((doc) => {
-        // Extract the document data into a post object
-        const post = doc.data();
-        post.id = doc.id;
-        filteredPosts.push(post);
+
+      // Create a new query that filters by the selected location
+      let query = postsRef.where("landmarkName", "==", selectedLocation);
+      query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+        const filteredPosts = [];
+        querySnapshot.forEach((doc) => {
+          // Extract the document data into a post object
+          const post = doc.data();
+          post.id = doc.id;
+          filteredPosts.push(post);
+        });
+
+        // Call the displayPosts function with the array of post objects
+        displayPosts(filteredPosts);
       });
-
-      // Call the displayPosts function with the array of post objects
-      displayPosts(filteredPosts);
-    });
-  }
+    }
   });
 }
-  // Function to display all the posts on the page initially
-  //It checks if the user has preset filter values and tries to display those first.
-  // It checks for a user location preference, then a user transport type preference.
-  function displayAllPosts() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
+// Function to display all the posts on the page initially
+//It checks if the user has preset filter values and tries to display those first.
+// It checks for a user location preference, then a user transport type preference.
+function displayAllPosts() {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
 
-        userRef.where("uid", "==", user.uid).get().then((querySnapshot) =>{
-          querySnapshot.forEach((doc) => {
-            const info = doc.data();
-            const local = info.location;
-            const transport = info.transport;
-            console.log(user.uid);
-            console.log(local);
-            console.log(transport);
+      userRef.where("uid", "==", user.uid).get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const info = doc.data();
+          const local = info.location;
+          const transport = info.transport;
+          console.log(user.uid);
+          console.log(local);
+          console.log(transport);
 
-            //If the user has a location, show only those posts.
-            if (local != "None"){
-              let query = postsRef.where("landmarkName", "==", local);
-              query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
-                const filteredPosts = [];
-                querySnapshot.forEach((doc) => {
-                  // Extract the document data into a post object
-                  const post = doc.data();
-                  post.id = doc.id;
-                  filteredPosts.push(post);
-                });
-
-                // Call the displayPosts function with the array of post objects
-                displayPosts(filteredPosts);
-              }); 
-              //If the user has a transport type insread, show only those posts.
-            } else if (transport != "None"){
-              let query = postsRef.where("transportType", "==", transport);
-              query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
-                const filteredPosts = [];
-                querySnapshot.forEach((doc) => {
-                  // Extract the document data into a post object
-                  const post = doc.data();
-                  post.id = doc.id;
-                  filteredPosts.push(post);
-                });
-          
-                // Call the displayPosts function with the array of post objects
-                displayPosts(filteredPosts);
+          //If the user has a location, show only those posts.
+          if (local != "None") {
+            let query = postsRef.where("landmarkName", "==", local);
+            query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+              const filteredPosts = [];
+              querySnapshot.forEach((doc) => {
+                // Extract the document data into a post object
+                const post = doc.data();
+                post.id = doc.id;
+                filteredPosts.push(post);
               });
-            } else {
-              //If they both have None just print all the posts.
-              postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
-                const allPosts = [];
-                querySnapshot.forEach((doc) => {
-                  // Extract the document data into a post object
-                  const post = doc.data();
-                  post.id = doc.id;
-                  allPosts.push(post);
-                });
-          
-                // Call the displayPosts function with the array of all post objects
-                displayPosts(allPosts);
+
+              // Call the displayPosts function with the array of post objects
+              displayPosts(filteredPosts);
+            });
+            //If the user has a transport type insread, show only those posts.
+          } else if (transport != "None") {
+            let query = postsRef.where("transportType", "==", transport);
+            query.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+              const filteredPosts = [];
+              querySnapshot.forEach((doc) => {
+                // Extract the document data into a post object
+                const post = doc.data();
+                post.id = doc.id;
+                filteredPosts.push(post);
               });
-            }
+
+              // Call the displayPosts function with the array of post objects
+              displayPosts(filteredPosts);
+            });
+          } else {
+            //If they both have None just print all the posts.
+            postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+              const allPosts = [];
+              querySnapshot.forEach((doc) => {
+                // Extract the document data into a post object
+                const post = doc.data();
+                post.id = doc.id;
+                allPosts.push(post);
+              });
+
+              // Call the displayPosts function with the array of all post objects
+              displayPosts(allPosts);
+            });
+          }
 
 
-          });
         });
-      } else {
-        postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
-          const allPosts = [];
-          querySnapshot.forEach((doc) => {
-            // Extract the document data into a post object
-            const post = doc.data();
-            post.id = doc.id;
-            allPosts.push(post);
-          });
-    
-          // Call the displayPosts function with the array of all post objects
-          displayPosts(allPosts);
+      });
+    } else {
+      postsRef.orderBy("last_updated", "desc").get().then((querySnapshot) => {
+        const allPosts = [];
+        querySnapshot.forEach((doc) => {
+          // Extract the document data into a post object
+          const post = doc.data();
+          post.id = doc.id;
+          allPosts.push(post);
         });
-      }
-    
-    });
 
-    
-  }
+        // Call the displayPosts function with the array of all post objects
+        displayPosts(allPosts);
+      });
+    }
+
+  });
+
+
+}
 // Function to display the posts on the page
 function displayPosts(posts) {
   const postContainer = document.getElementById("post-container");
@@ -182,7 +182,7 @@ function displayPosts(posts) {
     var imageSrc = "";
     if (post.image) {
       // Create an img element and set its src attribute to the ximage URL
-      imageSrc = post.image;      
+      imageSrc = post.image;
     }
     var postDesc = shortDesc(post.description);
     //Creates the card and adds it to the post container.
@@ -207,15 +207,15 @@ function displayPosts(posts) {
   }
 
   //Creates a shortened version of each description, only showing 81 characters and ending in a ...
-function shortDesc(description){
-  var shortenedDesc;
-  if (description.length > 80){
-    shortenedDesc = description.substring(0,80) + "...";
-  } else {
-    shortenedDesc = description;
+  function shortDesc(description) {
+    var shortenedDesc;
+    if (description.length > 80) {
+      shortenedDesc = description.substring(0, 80) + "...";
+    } else {
+      shortenedDesc = description;
+    }
+    return shortenedDesc;
   }
-  return shortenedDesc;
-}
 
 
   // Add event listener to each "View More" button
@@ -224,7 +224,7 @@ function shortDesc(description){
   for (let button of viewMoreButtons) {
     button.addEventListener("click", (event) => {
 
-      if (event.target.parentNode.querySelector(".card-text").getAttribute("style") == "display: block;"){
+      if (event.target.parentNode.querySelector(".card-text").getAttribute("style") == "display: block;") {
         const postId = event.target.getAttribute("data-post-id");
         event.target.parentNode.querySelector(".long-text").setAttribute("style", "display: block;");
         event.target.parentNode.querySelector(".card-text").setAttribute("style", "display: none;");
@@ -241,4 +241,3 @@ function shortDesc(description){
 
 // Call the displayAllPosts function to display all posts initially
 displayAllPosts();
-

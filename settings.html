@@ -36,82 +36,85 @@
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
-      
-    <div id="navinsert" style="position: sticky; top: 0; z-index: 10;"></div>
 
-    <div class="container whitebox">
-      <h1>User Profile </h1>
-      <form>
-          <fieldset class="mb-3" id="personalInfoFields1" disabled>
-              <div class="form-group">
-                <p><strong>Click "Edit" to make changes.</strong></p>
-                  <label>Enter your username.</label>
-                  <input type="text" id="nameInput" class="form-control" placeholder="Enter your username">
-              </div>
-          </fieldset>
-              <div class="form-group">
-                  <div>Choose your default location filters.</div>
-                  <br>
-                 
-                  <fieldset class="mb-3" id="personalInfoFields2" disabled><div>
-                    <input type="radio" id="brentwood" class="locationInput" class="form-control" name="locationInput">
-                    <label for="brentwood">Brentwood</label>
-                  </div><div>
-                    <input type="radio" id="metrotown" class="locationInput" class="form-control" name="locationInput">
-                    <label for="metrotown">Metrotown</label>
-                  </div><div>
-                    <input type="radio" id="bcit" class="locationInput" class="form-control" name="locationInput">
-                    <label for="bcit">BCIT</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="highway1" class="locationInput" class="form-control" name="locationInput">
-                    <label for="highway1">Highway 1</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="canada way" class="locationInput" class="form-control" name="locationInput">
-                    <label for="canada way">Canada Way</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="Willingdon" class="locationInput" class="form-control" name="locationInput">
-                    <label for="Willingdon">Willingdon</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="Lougheed" class="locationInput" class="form-control" name="locationInput">
-                    <label for="Lougheed">Lougheed</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="noneLocal" class="locationInput" class="form-control" name="locationInput">
-                    <label for="noneLocal">None</label>
-                  </div>
-                </fieldset>
-              </div>
-              <br>
-              <div class="form-group">
-                  <div>Choose your default transport filters.<br/> This will be used when you have a default location.</div>
-                  <br>
-                  <fieldset class="mb-3" id="personalInfoFields3" disabled><div>
-                    <input type="radio" id="bus" class="transportInput" class="form-control" value="Bus" name="transportInput">
-                    <label for="bus">Bus</label>
-                  </div><div>
-                    <input type="radio" id="car" class="transportInput" class="form-control" value="Car" name="transportInput">
-                    <label for="car">Car</label>
-                  </div><div>
-                    <input type="radio" id="noneTransport" class="transportInput" class="form-control" value="None" name="transportInput">
-                    <label for="noneTransport">None</label>
-                  </div>
-                </fieldset>
-              </div>
-          </fieldset>
-          <div class="d-flex justify-content-center mt-5 btn-container ">
-              <button type="button" class="btn btn-secondary" id="editbutton" onclick="editUserInfo()">Edit</button>
-              <span style="width: 10px"></span>
-              <button type="button" class="btn btn-info" id="savebutton" onclick="saveUserInfo()">Save</button>
-          </div>
-      </form>
+<div id="navinsert" style="position: sticky; top: 0; z-index: 10;"></div>
+<div class="container whitebox">
+  <h1>User Profile </h1>
+  <form>
+    <fieldset class="mb-3" id="personalInfoFields1" disabled>
+      <div class="form-group">
+        <p>
+          <strong>Click "Edit" to make changes.</strong>
+        </p>
+        <label>Enter your username.</label>
+        <input type="text" id="nameInput" class="form-control" placeholder="Enter your username">
+      </div>
+    </fieldset>
+    <div class="form-group">
+      <div>Choose your default location filters.</div>
+      <br>
+      <fieldset class="mb-3" id="personalInfoFields2" disabled>
+        <div>
+          <input type="radio" id="brentwood" class="locationInput" class="form-control" name="locationInput">
+          <label for="brentwood">Brentwood</label>
+        </div>
+        <div>
+          <input type="radio" id="metrotown" class="locationInput" class="form-control" name="locationInput">
+          <label for="metrotown">Metrotown</label>
+        </div>
+        <div>
+          <input type="radio" id="bcit" class="locationInput" class="form-control" name="locationInput">
+          <label for="bcit">BCIT</label>
+        </div>
+        <div>
+          <input type="radio" id="highway1" class="locationInput" class="form-control" name="locationInput">
+          <label for="highway1">Highway 1</label>
+        </div>
+        <div>
+          <input type="radio" id="canada way" class="locationInput" class="form-control" name="locationInput">
+          <label for="canada way">Canada Way</label>
+        </div>
+        <div>
+          <input type="radio" id="Willingdon" class="locationInput" class="form-control" name="locationInput">
+          <label for="Willingdon">Willingdon</label>
+        </div>
+        <div>
+          <input type="radio" id="Lougheed" class="locationInput" class="form-control" name="locationInput">
+          <label for="Lougheed">Lougheed</label>
+        </div>
+        <div>
+          <input type="radio" id="noneLocal" class="locationInput" class="form-control" name="locationInput">
+          <label for="noneLocal">None</label>
+        </div>
+      </fieldset>
+    </div>
+    <br>
+    <div class="form-group">
+      <div>Choose your default transport filters. <br /> This will be used when you have a default location. </div>
+      <br>
+      <fieldset class="mb-3" id="personalInfoFields3" disabled>
+        <div>
+          <input type="radio" id="bus" class="transportInput" class="form-control" value="Bus" name="transportInput">
+          <label for="bus">Bus</label>
+        </div>
+        <div>
+          <input type="radio" id="car" class="transportInput" class="form-control" value="Car" name="transportInput">
+          <label for="car">Car</label>
+        </div>
+        <div>
+          <input type="radio" id="noneTransport" class="transportInput" class="form-control" value="None" name="transportInput">
+          <label for="noneTransport">None</label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="d-flex justify-content-center mt-5 btn-container ">
+      <button type="button" class="btn btn-secondary" id="editbutton" onclick="editUserInfo()">Edit</button>
+      <span style="width: 10px"></span>
+      <button type="button" class="btn btn-info" id="savebutton" onclick="saveUserInfo()">Save</button>
+    </div>
+  </form>
 </div>
- 
-
-      <div id="footinsert"></div>
+<div id="footinsert"></div>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->

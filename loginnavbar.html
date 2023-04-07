@@ -1,73 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-
-
-
-
-<nav class="navbar navbar-dark">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <form class="d-flex">
-      
-      <button class="btn btn-outline-success" type="button" onclick="myPostsNav()">My Posts</button>
-      <button class="btn btn-outline-success" type="button" onclick="postsNav()">View all Posts</button>
-
+  <nav class="navbar navbar-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <form class="d-flex">
+        <button class="btn btn-outline-success" type="button" onclick="myPostsNav()">My Posts</button>
+        <button class="btn btn-outline-success" type="button" onclick="postsNav()">View all Posts</button>
         <button id="post-button" type="button" class="btn btn-info" onclick="uploadNav()">Create Post</button>
-
+      </form>
+    </div>
+  </nav>
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <div id="homediv">
+        <a id="homebtn" style="color:rgb(0, 0, 0);" href="main.html">
+          <span class="material-symbols-outlined">Home</span>Home </a>
+      </div>
+      <div id="settingsdiv">
+        <a id="settingbtn" style="color:rgb(0, 0, 0);" href="settings.html">
+          <span class="material-symbols-outlined">Settings</span>User Settings </a>
+      </div>
+      <div id="logoutdiv">
+        <a id="logoutbtn" style="color:rgb(0, 0, 0);">
+          <span class="material-symbols-outlined">Logout</span>Logout </a>
+      </div>
+    </div>
+  </div>
+  <div id="filterDrop" style="">
+    <h2 style="color: rgb(0, 0, 0);">Filters:</h2>
+    <form class="d-flex">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="drop1" style=""> Location </button>
+        <ul class="dropdown-menu" id="location-dropdown">
+          <li>
+            <button class="dropdown-item" type="button" data-location="None">None</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button" data-location="BCIT">BCIT Bus Loop</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button" data-location="Metrotown">Metrotown Station</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button" data-location="Brentwood">Brentwood Station</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button" data-location="Highway 1">Highway 1</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button" data-location="Canada Way">Canada Way</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button" data-location="Willingdon">Willingdon</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button" data-location="Lougheed">Lougheed Highway</button>
+          </li>
+        </ul>
+      </div>
+      <h2 style="color: rgb(0, 0, 0);">OR</h2>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="drop2" style=""> Transport Type </button>
+        <ul class="dropdown-menu" id="transport-dropdown">
+          <li>
+            <button class="dropdown-item" type="button" data-transport="None">None</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button" data-transport="car">Car</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button" data-transport="bus">Bus</button>
+          </li>
+        </ul>
+      </div>
     </form>
   </div>
-</nav>
-<div class="collapse" id="navbarToggleExternalContent">
-  <div class="bg-dark p-4">
-    <div id="homediv">
-      <a id="homebtn" style="color:rgb(0, 0, 0);" href="main.html"><span class="material-symbols-outlined">Home</span>Home</a>
-       
-      </div>
-    <div id="settingsdiv">
-    <a id="settingbtn" style="color:rgb(0, 0, 0);" href="settings.html"><span class="material-symbols-outlined">Settings</span>User Settings</a>
-    
-    </div>
-    <div id="logoutdiv">
-      <a id="logoutbtn" style="color:rgb(0, 0, 0);"><span class="material-symbols-outlined">Logout</span>Logout</a>
-      
-    </div>
-  </div>
-
-</div>
-<div id="filterDrop" style="">
-  <h2 style="color: rgb(0, 0, 0);">Filters:</h2>
-  <form class="d-flex">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="drop1" style="">
-        Location
-      </button>
-      <ul class="dropdown-menu" id="location-dropdown">
-        <li><button class="dropdown-item" type="button" data-location="None">None</button></li>
-        <li><button class="dropdown-item" type="button" data-location="BCIT">BCIT Bus Loop</button></li>
-        <li><button class="dropdown-item" type="button" data-location="Metrotown">Metrotown Station</button></li>
-        <li><button class="dropdown-item" type="button" data-location="Brentwood">Brentwood Station</button></li>
-        <li><button class="dropdown-item" type="button" data-location="Highway 1">Highway 1</button></li>
-        <li><button class="dropdown-item" type="button" data-location="Canada Way">Canada Way</button></li>
-        <li><button class="dropdown-item" type="button" data-location="Willingdon">Willingdon</button></li>
-        <li><button class="dropdown-item" type="button" data-location="Lougheed">Lougheed Highway</button></li>
-      </ul>
-    </div>
-    <h2 style="color: rgb(0, 0, 0);">OR</h2>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="drop2" style="">
-        Transport Type
-      </button>
-      <ul class="dropdown-menu" id="transport-dropdown">
-        <li><button class="dropdown-item" type="button" data-transport="None">None</button></li>
-        <li><button class="dropdown-item" type="button" data-transport="car">Car</button></li>
-        <li><button class="dropdown-item" type="button" data-transport="bus">Bus</button></li>
-      </ul>
-    </div>
-  </form>
-</div>
-
-<script src="./scripts/logout.js"></script>
+  <script src="./scripts/logout.js"></script>

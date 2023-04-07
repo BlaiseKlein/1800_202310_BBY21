@@ -69,11 +69,11 @@ body {
 .btn-container {
   display: flex;
   justify-content: center;
-  }
+}
   
-  .btn {
+.btn {
   margin: 0 10px;
-  }
+}
 
 .btn-outline-success{
   background-color: #63a6a2  ;
@@ -86,7 +86,6 @@ body {
   color: white; 
   border-color: #4c8a87;
 }
-
 
 #post-button {
   background-color: #8265a8 ; 
@@ -110,7 +109,6 @@ body {
   border-color: #4c8a87;
 }
 
-
 #filterDrop {
   display: flex; 
   background-color: #fff980 ; 
@@ -124,7 +122,6 @@ body {
   background-color: #6c4f93;
   border-color: #6c4f93;
 }
-
 
 /* Background from https://www.wallpaperflare.com/, modified in Photoshop */
 .background-image {
@@ -159,17 +156,13 @@ body {
   height: 200px;
 }
 
-
 #view-post-button{
   color:white;
 }
 
-
-
 .post {
   margin-bottom: 5%;
 }
-
 
 #savebutton {
   background-color: #8265a8 ; 
@@ -193,7 +186,6 @@ body {
   border-color: #63a6a2 ;
 }
 
-
 #editbutton:hover {
   background-color: #4c8a87;
   border-color: #4c8a87;
@@ -212,11 +204,8 @@ body {
   z-index: 1;
 }
 
-
 .card {
   border: 10px solid rgba(255, 249, 128, 0.15);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
   padding:2%;
 }
-
-
