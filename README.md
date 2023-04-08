@@ -67,7 +67,7 @@ Content of the project folder:
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
-    /backgroundblurred.jpg   # [BCIT Campus Photograph]. Wallpaperflare. https://www.wallpaperflare.com burnaby-canada-british-columbia-institute-of-technology-bcit-wallpaper-eiuek
+    /backgroundblurred.jpg   # [BCIT Campus Photograph]. Wallpaperflare. https://www.wallpaperflare.com/burnaby-canada-british-columbia-institute-of-technology-bcit-wallpaper-eiuek
     /background2.jpg         # [White pattern background digital illustration]. Pixabay. https://pixabay.com/illustrations/geometric-triangle-modern-mosaic-1906240/
     /bcitlogo.png            # [Train digital illustration.] Freepik. https://www.freepik.com/free-vector/abstract-high-speed-train-logo_789917.htm#query=train%20logo&position=1&from_view=search&track=ais
     /noimage.jpg             # [Train digital illustration.] Freepik. https://www.freepik.com/free-vector/abstract-high-speed-train-logo_789917.htm#query=train%20logo&position=1&from_view=search&track=ais
@@ -88,4 +88,12 @@ It has the following subfolders and files:
 
 ```
 
+## 8. Acknowledgements 
+* [BCIT Campus Photograph]. Wallpaperflare. https://www.wallpaperflare.com/burnaby-canada-british-columbia-institute-of-technology-bcit-wallpaper-eiuek/
+* [White pattern background digital illustration]. Pixabay. https://pixabay.com/illustrations/geometric-triangle-modern-mosaic-1906240/
+* [Train digital illustration.] Freepik. https://www.freepik.com/free-vector/abstract-high-speed-train-logo_789917.htm#query=train%20logo&position=1&from_view=search&track=ais
 
+## 9. Contact
+* Jimmy Tsang - jimmytsang42@gmail.com
+* Blaise Klein - blaiseklein15@gmail.com
+* Huarui Ji - jihuarui29@gmail.com
